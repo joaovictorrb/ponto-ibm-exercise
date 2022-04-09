@@ -1,26 +1,19 @@
-# Adonis fullstack application
-
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+# Adonis Server
 
 ## Setup
+Manually clone the repo.
 
-Use the adonis command to install the blueprint
+Create a database in your machine and set it on .env
+Or
+Rename .env.example to .env
 
-```bash
-adonis new yardstick
+and then run `npm install`.
+### Must Do
+
+Generate key for adonis
+```js
+adonis key:generate         //Generate secret key for the app
 ```
-
-or manually clone the repo and then run `npm install`.
-
 
 ### Migrations
 
@@ -28,4 +21,11 @@ Run the following command to run startup migrations.
 
 ```js
 adonis migration:run
+```
+
+### RUN SERVER
+
+To start the service, use the following command:
+```
+adonis serve --dev
 ```
