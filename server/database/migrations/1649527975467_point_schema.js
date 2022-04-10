@@ -7,7 +7,11 @@ class PointSchema extends Schema {
 	up() {
 		this.create('points', (table) => {
 			table.increments('pointId').unique().primary(true)
-			table.datetime('dateHour').notNullable()
+			table.integer('userId').unsigned().references('userId').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+			table.datetime('dateHourInit')
+			table.datetime('dateHourEnd')
+			table.boolean('hoursExceeded').notNullable().default(false)
+
 			table.timestamps()
 		})
 	}
