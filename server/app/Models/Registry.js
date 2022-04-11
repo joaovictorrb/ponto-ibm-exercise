@@ -3,22 +3,26 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class Point extends Model {
+class Registry extends Model {
 	static get connection() {
 		return 'mysql'
 	}
 
 	static get table() {
-		return 'points'
+		return 'registries'
 	}
 
 	static get primaryKey() {
-		return 'pointId'
+		return 'registryId'
 	}
 
-	registry() {
-		return this.belongsTo('App/Models/Registry')
+	user() {
+		return this.hasOne('App/Models/User')
+	}
+
+	point() {
+		return this.hasMany('App/Models/Point')
 	}
 }
 
-module.exports = Point
+module.exports = Registry
