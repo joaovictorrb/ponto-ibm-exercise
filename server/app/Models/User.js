@@ -35,6 +35,10 @@ class User extends Model {
 		return this.hasMany('App/Models/Token')
 	}
 
+	registry() {
+		return this.hasMany('App/Models/Registry')
+	}
+
 	points() {
 		return this.hasMany('App/Models/Point')
 	}
