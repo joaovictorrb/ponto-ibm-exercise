@@ -16,5 +16,10 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('/:userId/newPointRegistry/', 'Pointcontroller.newPoint')
 
+//pontos
+Route.post('/:userId/newPointRegistry', 'PointController.newPoint')
+Route.get('/:userId/showDailyPoints', 'PointController.showPoints')
+
+// registro
+// Route.post('/:userId/registry', 'RegistryController.newDailyRegistry')
