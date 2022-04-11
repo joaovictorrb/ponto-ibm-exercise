@@ -16,6 +16,7 @@ class PointSchema extends Schema {
 				.onDelete('CASCADE')
 			table.string('date')
 			table.string('hour')
+			table.string('unixTimeStampMilli')
 			table.timestamps()
 		})
 	}

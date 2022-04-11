@@ -8,6 +8,7 @@ Or
 Rename .env.example to .env
 
 and then run `npm install`.
+
 ### Must Do
 
 Generate key for adonis
@@ -22,6 +23,16 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+Run the factory/seeds
+```js
+adonis seed
+```
+
+User registered:
+- Username: Student
+- Email: student@gmail.com
+- Password: Student123
 
 ### RUN SERVER
 
