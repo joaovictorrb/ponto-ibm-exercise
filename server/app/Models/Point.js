@@ -16,8 +16,8 @@ class Point extends Model {
 		return 'pointId'
 	}
 
-	registry() {
-		return this.belongsTo('App/Models/Registry')
+	user() {
+		return this.belongsTo('App/Models/User')
 	}
 }
 

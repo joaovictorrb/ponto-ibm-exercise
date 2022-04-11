@@ -6,8 +6,9 @@ const Schema = use('Schema')
 class RegistrySchema extends Schema {
 	up() {
 		this.create('registries', (table) => {
-			table.increments('registryId').unique().primary(true)
-			table.integer('userId').unsigned().references('userId').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+			table.increments('registryId').primary(true)
+			table.integer('user_id').unsigned().references('userId').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+			table.date('registryReferalDate')
 			table.boolean('hoursExceeded').notNullable().default(false)
 			table.float('avaliableHours')
 			table.timestamps()

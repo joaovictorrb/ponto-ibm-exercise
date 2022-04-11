@@ -8,15 +8,14 @@ class PointSchema extends Schema {
 		this.create('points', (table) => {
 			table.increments('pointId').unique().primary(true)
 			table
-				.integer('registryId')
+				.integer('user_id')
 				.unsigned()
-				.references('registryId')
-				.inTable('registries')
+				.references('userId')
+				.inTable('users')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE')
 			table.string('date')
-			table.string('hourInit')
-			table.string('hourEnd')
+			table.string('unixTimeStamp')
 			table.timestamps()
 		})
 	}

@@ -47,8 +47,8 @@ module.exports = {
   | npm i --save mysql
   |
   */
-	mysql2: {
-		client: 'mysql2',
+	mysql: {
+		client: 'mysql',
 		connection: {
 			host: Env.get('DB_HOST', 'localhost'),
 			port: Env.get('DB_PORT', ''),

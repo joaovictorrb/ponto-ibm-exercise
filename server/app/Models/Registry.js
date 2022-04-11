@@ -17,11 +17,7 @@ class Registry extends Model {
 	}
 
 	user() {
-		return this.hasOne('App/Models/User')
-	}
-
-	point() {
-		return this.hasMany('App/Models/Point')
+		return this.belongsTo('App/Models/User')
 	}
 }
 
