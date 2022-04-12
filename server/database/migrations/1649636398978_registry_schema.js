@@ -8,7 +8,7 @@ class RegistrySchema extends Schema {
 		this.create('registries', (table) => {
 			table.increments('registryId').primary(true)
 			table.integer('user_id').unsigned().references('userId').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
-			table.date('registryReferalDate')
+			table.string('registryReferalDate')
 			table.boolean('hoursExceeded').notNullable().default(false)
 			table.float('avaliableHours')
 			table.timestamps()
