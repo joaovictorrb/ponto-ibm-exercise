@@ -4,7 +4,7 @@ import AuthRoutes from './auth.routes';
 import AppRoutes from './app.routes';
 
 function Routes() {
-  return <AuthRoutes />;
-};
+  return 
+}
 
 export default Routes;

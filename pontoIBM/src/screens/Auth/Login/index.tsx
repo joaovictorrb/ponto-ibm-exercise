@@ -1,3 +1,4 @@
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -9,15 +10,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { styles } from './styles';
+import {styles} from './styles';
 
-export default function SignIn() {
+export default function Login() {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
-
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Login</Text>
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -38,7 +42,13 @@ export default function SignIn() {
       </View>
 
       <TouchableOpacity>
-        <Text style={styles.forgot_button}>Don't have a account? Register now</Text>
+        <Text
+          style={styles.forgot_button}
+          onPress={() => {
+            navigation.navigate('SignUp');
+          }}>
+          Nao tem uma conta? Clique aqui.
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn}>
@@ -47,4 +57,3 @@ export default function SignIn() {
     </View>
   );
 }
-
