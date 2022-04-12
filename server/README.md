@@ -110,8 +110,6 @@ adonis serve --dev
 ]
 ```
 
-### GET DAILY REGISTRY
-
 ### POST NEW DAILY REGISTRY
 - {{URL}}/:userId/newPointRegistry
  - Params > :userId
@@ -124,4 +122,47 @@ adonis serve --dev
 	"name": "Created",
 	"status": 201
 }
+```
+
+### GET DAILY REGISTRY BY MONTH
+- {{URL}}/:userId/showPoints
+ - Params 
+	- :userId
+	- :month? OPTIONAL
+ - Body > Empty
+ - Método > GET
+
+- Response:
+```json
+[
+	{
+		"userId": 1,
+		"username": "Student",
+		"email": "student@gmail.com",
+		"created_at": null,
+		"updated_at": null,
+		"registry": [
+			{
+				"registryId": 1,
+				"user_id": 1,
+				"registryReferalDate": "2022-11-04",
+				"referalMonth": "ABRIL",
+				"hoursExceeded": 1,
+				"avaliableHours": 0.22,
+				"created_at": null,
+				"updated_at": null
+			},
+			{
+				"registryId": 23,
+				"user_id": 1,
+				"registryReferalDate": "2022-04-12",
+				"referalMonth": "ABRIL",
+				"hoursExceeded": 0,
+				"avaliableHours": -8,
+				"created_at": "2022-04-12 14:19:40",
+				"updated_at": "2022-04-12 14:19:40"
+			}
+		]
+	}
+]
 ```
