@@ -17,9 +17,12 @@
 const Route = use('Route')
 
 
-//pontos
+// pontos
 Route.post('/:userId/newPointRegistry', 'PointController.newPoint')
-Route.get('/:userId/showDailyPoints', 'PointController.showPoints')
+Route.get('/:userId/showPoints', 'PointController.showPoints')
 
 // registro
-// Route.post('/:userId/registry', 'RegistryController.newDailyRegistry')
+Route.post('/:userId/registry', 'RegistryController.newDailyRegistry')
+Route.get('/:userId/registry/:month?', 'RegistryController.showRegistry')
+
+

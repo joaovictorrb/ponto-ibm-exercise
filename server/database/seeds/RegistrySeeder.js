@@ -17,7 +17,8 @@ class RegistrySeeder {
   async run () {
     await Database.table("registries").insert({
       user_id: 1,
-      registryReferalDate: "2022-11-04",
+      registryReferalDate: "2022-04-12",
+      referalMonth: "april",
       hoursExceeded: 1,
       avaliableHours: 0.22
     });
