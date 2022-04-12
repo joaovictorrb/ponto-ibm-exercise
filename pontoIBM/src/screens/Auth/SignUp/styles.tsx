@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   inputView: {
     backgroundColor: '#F4F4F4',
     borderRadius: 5,
-    width: '80%',
+    width: '85%',
     height: 45,
     marginBottom: 20,
 
@@ -29,13 +29,19 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
   },
 
-  forgot_button: {
-    height: 30,
+  title: {
+    marginLeft: 30,
+    fontSize: 25,
+  },
+
+  titleContainer: {
+    alignSelf: 'flex-start',
     marginBottom: 30,
+    height: 40,
   },
 
   loginBtn: {
-    width: '80%',
+    width: '85%',
     borderRadius: 5,
     height: 50,
     alignItems: 'center',
