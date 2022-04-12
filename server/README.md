@@ -47,9 +47,9 @@ adonis serve --dev
 ### GENERATE POINT
 
 - {{URL}}/:userId/newPointRegistry
- > Params > :userId
- > Body > Empty
- > Método > POST
+ - Params > :userId
+ - Body > Empty
+ - Método > POST
 
 - Response:
 ```json
@@ -64,9 +64,9 @@ adonis serve --dev
 ### FETCH CURRENT DAY POINTS
 
 - {{URL}}/:userId/showPoints
- > Params > :userId
- > Body > Empty
- > Método > GET
+ - Params > :userId
+ - Body > Empty
+ - Método > GET
 
 - Response:
 ```json
@@ -114,9 +114,9 @@ adonis serve --dev
 
 ### POST NEW DAILY REGISTRY
 - {{URL}}/:userId/newPointRegistry
- > Params > :userId
- > Body > Empty
- > Método > POST
+ - Params > :userId
+ - Body > Empty
+ - Método > POST
  
 ```json
 {
