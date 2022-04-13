@@ -1,16 +1,31 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
+import Icon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 
 interface HeaderProps {
   title?: string;
+  returnButton: boolean;
 }
 
-export default function Header({title}: HeaderProps) {
+export default function Header({title, returnButton}: HeaderProps) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <Text style={styles.title}>{title}</Text>
+        {returnButton === true ? (
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Dashboard');
+              }}>
+              <Icon name="x" style={styles.icon} />
+            </TouchableOpacity>
+          </View>
+        ) : null}
       </View>
     </View>
   );

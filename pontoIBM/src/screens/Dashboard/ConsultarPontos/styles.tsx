@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  
   // Containers
 
   container: {
@@ -12,12 +11,13 @@ export const styles = StyleSheet.create({
   },
 
   mainContent: {
-    display: 'flex',
     flex: 1,
+    display: 'flex',
     width: '100%',
     backgroundColor: '#F4F4F4',
+    justifyContent: 'center',
   },
-  
+
   logoutContainer: {
     flexDirection: 'row',
     position: 'absolute',
@@ -28,52 +28,47 @@ export const styles = StyleSheet.create({
 
   // Text
 
-  buttonText: {
+  cardText: {
     fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: 22,
+    fontSize: 18,
+    marginLeft: 10,
+    marginTop: 5,
     alignSelf: 'flex-start',
-    marginLeft: 10,
-    marginTop: 5,
+    color: 'black',
   },
 
-  logoutButtonText: {
+  cardTitle: {
     fontWeight: '300',
     fontStyle: 'normal',
     fontSize: 22,
-    alignSelf: 'center',
     marginLeft: 10,
     marginTop: 5,
-    color: 'white',
+    alignSelf: 'flex-start',
+    color: '#0F62FE',
   },
 
-  button: {
+  cardTitleAlt: {
+    fontWeight: '300',
+    fontStyle: 'normal',
+    fontSize: 22,
+    marginLeft: 10,
+    marginTop: 5,
+    alignSelf: 'flex-start',
+    color: 'red',
+  },
+
+  // Cards
+  
+  card: {
     borderRadius: 5,
     width: '95%',
-    height: 70,
+    height: 'auto',
     margin: 10,
-    alignItems: 'center',
-    backgroundColor: 'white',
+    padding: 10,
+    backgroundColor: '#ffffff',
+    
   },
-
-  logoutButton: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: 75,
-    height: 75,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 100,
-    marginBottom: 30,
-    marginRight: 20,
-    backgroundColor: '#da1e28',
-  },
-
-  icon: {
-    fontSize: 28,
-    color: 'white',
-  }
 });
 
 // ThemeColors: {
@@ -81,6 +76,11 @@ export const styles = StyleSheet.create({
 //   SecondaryColor: "#FFFFFF",
 //   Icon: "#FFFFFF",
 //   UI: "#F4F4F4",
+//
+//   BotaoMarcarPonto: #42be65 ==> Entrada
+//   BotaoMarcarPonto: #42be65 ==> Saida
+
+//   BotaoMarcarPonto: #4589ff ==> Entrada == desativado se
 
 // },
 
