@@ -41,13 +41,14 @@ To start the service, use the following command:
 adonis serve --dev
 ```
 
+</br>
 
 ## ENDPOINTS
 
-### REGISTER NEW USER
-- Method > POST
-- {{URL}}/register
+</br>
 
+### REGISTER NEW USER - {{URL}}/register
+- Method > POST
 - Body
 ```json
 {
@@ -68,14 +69,17 @@ adonis serve --dev
 }
 ```
 
-### LOGIN
+</br>
+
+### LOGIN - {{URL}}/login
 - Method > POST
-- {{URL}}/login
 - Body
+```json
 {
 	"email": "usern@gmail.com",
 	"password": "usern123"
 }
+```
 
 - Response
 ```json
@@ -86,9 +90,10 @@ adonis serve --dev
 }
 ```
 
-### VERIFY SESSION
+</br>
+
+### VERIFY SESSION - {{URL}}/session
 - Method > POST
-- {{URL}}/session
 - Token > JWT
 - Body > Empty
 
@@ -103,9 +108,10 @@ adonis serve --dev
 }
 ```
 
-### GENERATE POINT
+</br>
+
+### GENERATE POINT - {{URL}}/newPointRegistry
 - Method > POST
-- {{URL}}/newPointRegistry
 - Token > JWT
 - Body > Empty
 
@@ -119,9 +125,10 @@ adonis serve --dev
 }
 ```
 
-### FETCH CURRENT DAY POINTS
+</br>
+
+### FETCH CURRENT DAY POINTS - {{URL}}/showPoints
 - Method > GET
-- {{URL}}/showPoints
 - Token > JWT
 - Body > Empty
 
@@ -167,13 +174,14 @@ adonis serve --dev
 ]
 ```
 
-### POST NEW DAILY REGISTRY
+</br>
+
+### POST NEW DAILY REGISTRY - {{URL}}/registry
 - Method > POST
-- {{URL}}/newPointRegistry
 - Token > JWT
 - Body > Empty
 
- 
+-Response
 ```json
 {
 	"message": "Registro criado com sucesso",
@@ -182,9 +190,10 @@ adonis serve --dev
 }
 ```
 
-### GET DAILY REGISTRY BY MONTH
+</br>
+
+### {{URL}}/registry/:month? - GET DAILY REGISTRY BY MONTH
 - Method > GET
-- {{URL}}/showPoints
 - Params 
  - :month? OPTIONAL
 - Token > JWT
@@ -194,31 +203,21 @@ adonis serve --dev
 ```json
 [
 	{
-		"userId": 1,
-		"username": "Student",
-		"email": "student@gmail.com",
-		"created_at": null,
-		"updated_at": null,
+		"userId": 2,
+		"username": "usern",
+		"email": "usern@gmail.com",
+		"created_at": "2022-04-12 23:25:17",
+		"updated_at": "2022-04-12 23:25:17",
 		"registry": [
 			{
-				"registryId": 1,
-				"user_id": 1,
-				"registryReferalDate": "2022-11-04",
-				"referalMonth": "ABRIL",
-				"hoursExceeded": 1,
-				"avaliableHours": 0.22,
-				"created_at": null,
-				"updated_at": null
-			},
-			{
-				"registryId": 23,
-				"user_id": 1,
-				"registryReferalDate": "2022-04-12",
+				"registryId": 24,
+				"user_id": 2,
+				"registryReferalDate": "2022-04-13",
 				"referalMonth": "ABRIL",
 				"hoursExceeded": 0,
 				"avaliableHours": -8,
-				"created_at": "2022-04-12 14:19:40",
-				"updated_at": "2022-04-12 14:19:40"
+				"created_at": "2022-04-12 23:45:07",
+				"updated_at": "2022-04-12 23:45:07"
 			}
 		]
 	}
