@@ -5,21 +5,14 @@ import Espelho from '../screens/Dashboard/Espelho';
 import ConsultarPontos from '../screens/Dashboard/ConsultarPontos';
 import RegistrarPontos from '../screens/Dashboard/RegistrarPontos';
 
-type AppRoutesParams = {
-  Dashboard: undefined;
-  ConsultarPontos: undefined;
-  RegistrarPontos: undefined;
-  Espelho: undefined;
-};
-
-const AppStack = createStackNavigator<AppRoutesParams>();
+const AppStack = createStackNavigator();
 
 function AppRoutes() {
   return (
     <AppStack.Navigator
-    initialRouteName='RegistrarPontos'  
+    initialRouteName='Dashboard'  
     screenOptions={{
-        headerShown: false,
+        headerShown: false
       }}>
       <AppStack.Screen name="Dashboard" component={Dashboard} />
       <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />

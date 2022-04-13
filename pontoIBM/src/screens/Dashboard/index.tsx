@@ -3,15 +3,16 @@ import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default function Dashboard() {
   const navigator = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Header title="Fulano da Silva" />
+      <Header title="Fulano da Silva" returnButton={false} />
 
-      <ScrollView style={styles.mainContent}>
+      <View style={styles.mainContent}>
         <View>
           <TouchableOpacity
             style={styles.button}
@@ -44,7 +45,7 @@ export default function Dashboard() {
             <Text style={styles.buttonText}>Espelho</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
       <View style={styles.logoutContainer}>
         <TouchableOpacity
           style={styles.logoutButton}
@@ -52,7 +53,7 @@ export default function Dashboard() {
           onPress={() => {
             navigator.goBack;
           }}>
-          <Text style={styles.logoutButtonText}>LogOut</Text>
+            <Icon name='power' style={styles.icon}/>
         </TouchableOpacity>
       </View>
     </View>

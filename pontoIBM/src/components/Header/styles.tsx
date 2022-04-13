@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
   header: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
     width: '100%',
     height: '14%',
     backgroundColor: '#0F62FE',
@@ -12,8 +11,23 @@ export const styles = StyleSheet.create({
 
   headerContent: {
     display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'flex-end',
+    justifyContent: 'space-between',
     marginLeft: 10,
     marginTop: 10,
+  },
+
+  buttonContainer: {
+    marginRight: 15,
+    marginTop: 5,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
+  icon: {
+    fontSize: 30,
+    color: 'white',
   },
 
   title: {
