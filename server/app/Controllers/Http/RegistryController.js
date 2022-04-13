@@ -5,8 +5,9 @@ const RegistryModel = use('App/Models/Registry')
 const UserModel = use('App/Models/User')
 
 class RegistryController {
-  async newDailyRegistry({params, request, response}) {
-    const user = await UserModel.find(params.userId)
+  async newDailyRegistry({auth, request, response}) {
+    const userId = auth.user.userId
+    const user = await UserModel.find(userId)
     const dateNow = moment(Date.now()).utc().format('YYYY-MM-DD')
     let referalMonth = (moment(dateNow).locale('pt').startOf("month").format('MMMM')).toUpperCase();
     let sumMinutos = 0
@@ -42,7 +43,7 @@ class RegistryController {
     }
 
     const storeRegistry = await RegistryModel.create({
-      user_id: params.userId,
+      user_id: userId,
       registryReferalDate: dateNow,
       referalMonth,
       hoursExceeded,
@@ -56,19 +57,20 @@ class RegistryController {
     return response.status(201).send({ message: 'Registro criado com sucesso', name: 'Created', status: 201 })
   }
 
-  async showRegistry({params, request, response}) {
-    const user = await UserModel.find(params.userId)
+  async showRegistry({auth, params, response}) {
+    const userId = auth.user.userId
+    const user = await UserModel.find(userId)
     const month = params.month
     if(!user) return response.status(400).send({ error: { message: 'Usuário não encontrado', name: 'Bad Request', status: 400 } })
 
-    let getRegistry = (await UserModel.query().with('registry').where('userId', params.userId).fetch()).toJSON()
+    let getRegistry = (await UserModel.query().with('registry').where('userId', userId).fetch()).toJSON()
     if(month){
       getRegistry = (
         await UserModel.query()
           .with('registry', (builder) => {
             builder.where('referalMonth', month.toUpperCase())
           })
-          .where('userId', params.userId)
+          .where('userId', userId)
           .fetch()
         ).toJSON()
     }

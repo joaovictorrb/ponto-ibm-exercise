@@ -44,12 +44,70 @@ adonis serve --dev
 
 ## ENDPOINTS
 
-### GENERATE POINT
+### REGISTER NEW USER
+- Method > POST
+- {{URL}}/register
 
-- {{URL}}/:userId/newPointRegistry
- - Params > :userId
- - Body > Empty
- - Método > POST
+- Body
+```json
+{
+	"username": "usern",
+	"email": "usern@gmail.com",
+	"password": "usern123"
+}
+```
+
+- Response:
+```json
+{
+	"username": "usern",
+	"email": "usern@gmail.com",
+	"created_at": "2022-04-12 23:25:17",
+	"updated_at": "2022-04-12 23:25:17",
+	"userId": 2
+}
+```
+
+### LOGIN
+- Method > POST
+- {{URL}}/login
+- Body
+{
+	"email": "usern@gmail.com",
+	"password": "usern123"
+}
+
+- Response
+```json
+{
+	"type": "bearer",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTY0OTgxNjc0NCwiZXhwIjoxNjQ5ODIzOTQ0fQ.XveKAjZygT-00w6eoLD_htsCYZHP2nMlrlVUYWzHmoQ",
+	"refreshToken": null
+}
+```
+
+### VERIFY SESSION
+- Method > POST
+- {{URL}}/session
+- Token > JWT
+- Body > Empty
+
+- Response
+```json
+{
+	"userId": 2,
+	"username": "usern",
+	"email": "usern@gmail.com",
+	"created_at": "2022-04-12 23:25:17",
+	"updated_at": "2022-04-12 23:25:17"
+}
+```
+
+### GENERATE POINT
+- Method > POST
+- {{URL}}/newPointRegistry
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json
@@ -62,11 +120,10 @@ adonis serve --dev
 ```
 
 ### FETCH CURRENT DAY POINTS
-
-- {{URL}}/:userId/showPoints
- - Params > :userId
- - Body > Empty
- - Método > GET
+- Method > GET
+- {{URL}}/showPoints
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json
@@ -111,10 +168,11 @@ adonis serve --dev
 ```
 
 ### POST NEW DAILY REGISTRY
-- {{URL}}/:userId/newPointRegistry
- - Params > :userId
- - Body > Empty
- - Método > POST
+- Method > POST
+- {{URL}}/newPointRegistry
+- Token > JWT
+- Body > Empty
+
  
 ```json
 {
@@ -125,12 +183,12 @@ adonis serve --dev
 ```
 
 ### GET DAILY REGISTRY BY MONTH
-- {{URL}}/:userId/showPoints
- - Params 
-	- :userId
-	- :month? OPTIONAL
- - Body > Empty
- - Método > GET
+- Method > GET
+- {{URL}}/showPoints
+- Params 
+ - :month? OPTIONAL
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json

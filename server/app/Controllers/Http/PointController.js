@@ -5,10 +5,10 @@ const UserModel = use('App/Models/User')
 const moment = require('moment')
 
 class PointController {
-	async newPoint({ params, request, response }) {
+	async newPoint({ auth, response }) {
 		const unixTimeStampMilli = Date.now()
 		let flagIsEntryPoint = true
-		const user_id = params.userId
+		const user_id = auth.user.userId
 		const user = await UserModel.find(user_id)
 
 		const date = moment(unixTimeStampMilli).utc().format('YYYY-MM-DD')
@@ -34,8 +34,8 @@ class PointController {
 			{ flagIsEntryPoint ,message: 'Ponto criado com sucesso', name: 'Created', status: 201 } )
 	}
 
-	async showPoints({params, request, response}) {
-		const user = await UserModel.find(params.userId)
+	async showPoints({auth, request, response}) {
+		const user = await UserModel.find(auth.user.userId)
 		
 		const dateNow = moment(Date.now()).utc().format('YYYY-MM-DD')
 		let getDailyPoints = (await user.points().where('date', dateNow).fetch()).toJSON()
