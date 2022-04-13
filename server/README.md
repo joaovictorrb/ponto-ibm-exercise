@@ -61,11 +61,9 @@ adonis serve --dev
 - Response:
 ```json
 {
-	"username": "usern",
-	"email": "usern@gmail.com",
-	"created_at": "2022-04-12 23:25:17",
-	"updated_at": "2022-04-12 23:25:17",
-	"userId": 2
+	"message": "Usuário criado com sucesso!",
+	"name": "SUCESSO",
+	"status": 201
 }
 ```
 
