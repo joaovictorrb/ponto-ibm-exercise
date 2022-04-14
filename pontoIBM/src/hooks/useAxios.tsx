@@ -26,3 +26,5 @@ const useAxios = (axiosParams: AxiosRequestConfig) => {
 
     return { response, error, loading };
 }
+
+export default useAxios;
