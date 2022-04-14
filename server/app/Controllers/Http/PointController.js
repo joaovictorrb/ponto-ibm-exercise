@@ -36,6 +36,8 @@ class PointController {
 
 	async showPoints({auth, request, response}) {
 		const user = await UserModel.find(auth.user.userId)
+
+		if(!user) return response.status(400).send({ error: { message: 'Usuário não encontrado', name: 'Bad Request', status: 400 } })
 		
 		const dateNow = moment(Date.now()).utc().format('YYYY-MM-DD')
 		let getDailyPoints = (await user.points().where('date', dateNow).fetch()).toJSON()
