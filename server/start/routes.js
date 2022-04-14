@@ -16,13 +16,19 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+// Auth
+Route.post("/sessions", "AuthController.verifySession");
+// Fetch user for login
+Route.post("/login", "AuthController.verifyUser");
+// Regiter new user
+Route.post("/register", "UserController.createUser");
 
 // pontos
-Route.post('/:userId/newPointRegistry', 'PointController.newPoint')
-Route.get('/:userId/showPoints', 'PointController.showPoints')
+Route.post('/newPointRegistry', 'PointController.newPoint').middleware('auth:jwt')
+Route.get('/showPoints', 'PointController.showPoints').middleware('auth:jwt')
 
 // registro
-Route.post('/:userId/registry', 'RegistryController.newDailyRegistry')
-Route.get('/:userId/registry/:month?', 'RegistryController.showRegistry')
+Route.post('/registry', 'RegistryController.newDailyRegistry').middleware('auth:jwt')
+Route.get('/registry/:month?', 'RegistryController.showRegistry').middleware('auth:jwt')
 
 
