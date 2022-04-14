@@ -41,8 +41,6 @@ class PointController {
 		
 		const dateNow = moment(Date.now()).utc().format('YYYY-MM-DD')
 		const points = (await user.points().select('pointId' ,'date', 'hour').where('date', dateNow).fetch()).toJSON()
-		
-		console.log(points.length);
 
 		points.forEach((el, index) => {
 			el.flagIsEntry = false 
