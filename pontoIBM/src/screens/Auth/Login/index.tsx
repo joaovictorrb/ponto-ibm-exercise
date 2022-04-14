@@ -1,59 +1,63 @@
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
-
+import {useNavigation} from '@react-navigation/native';
+import React, {useContext} from 'react';
+import {Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {signIn} from '../../../mockup/login';
 import {styles} from './styles';
+import AuthContext from '../../../context/authContext';
 
 export default function Login() {
-  const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  // Aqui estamos puxando a funçao signIn do provider
+  const {signed, LogIn} = useContext(AuthContext);
+  
+  console.log(signed, LogIn)
+  // Pega o mockup e retorna de maneira assincrona no apertar do botao de Login
+  async function HandleLogin() {
+    LogIn();
+
+    console.log(LogIn())
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Login</Text>
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email."
-          placeholderTextColor="#003f5c"
-          onChangeText={email => setEmail(email)}
-        />
-      </View>
+      <View style={styles.cardContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Login</Text>
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Email"
+            placeholderTextColor="#003f5c"
+            onChangeText={() => {}}
+          />
+        </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={password => setPassword(password)}
-        />
-      </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            onChangeText={() => {}}
+          />
+        </View>
 
-      <TouchableOpacity>
-        <Text
-          style={styles.forgot_button}
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.forgotButton}
           onPress={() => {
             navigation.navigate('SignUp');
           }}>
-          Nao tem uma conta? Clique aqui.
-        </Text>
-      </TouchableOpacity>
+          <Text style={styles.forgotButtonText}>
+            Nao tem uma conta? Clique aqui.
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.loginBtn} onPress={HandleLogin}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
