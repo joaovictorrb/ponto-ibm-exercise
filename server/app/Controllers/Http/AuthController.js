@@ -3,13 +3,12 @@
 class SessionController {
   async verifySession({ response, auth }) {
     try {
-      const user = await auth.check();
+      await auth.check();
 
       let responseData = {}
-      responseData.userId = user.userId
-      responseData.username = user.username
-      responseData.email = user.email
-
+      responseData.userId = auth.user.userId
+      responseData.username = auth.user.username
+      responseData.email = auth.user.email
       response.ok(responseData)
     } catch (error) {
       response.unauthorized({ message: "Missing or invalid jwt token" })
@@ -21,7 +20,7 @@ class SessionController {
 
     const token = await auth.attempt(data.email, data.password)
     
-    response.ok(token)
+    response.ok(token);
   }
 }
 
