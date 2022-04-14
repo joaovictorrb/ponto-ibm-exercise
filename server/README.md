@@ -41,15 +41,77 @@ To start the service, use the following command:
 adonis serve --dev
 ```
 
+</br>
 
 ## ENDPOINTS
 
-### GENERATE POINT
+</br>
 
-- {{URL}}/:userId/newPointRegistry
- - Params > :userId
- - Body > Empty
- - Método > POST
+### REGISTER NEW USER - {{URL}}/register
+- Method > POST
+- Body
+```json
+{
+	"username": "usern",
+	"email": "usern@gmail.com",
+	"password": "usern123"
+}
+```
+
+- Response:
+```json
+{
+	"message": "Usuário criado com sucesso!",
+	"name": "SUCESSO",
+	"status": 201
+}
+```
+
+</br>
+
+### LOGIN - {{URL}}/login
+- Method > POST
+- Body
+```json
+{
+	"email": "usern@gmail.com",
+	"password": "usern123"
+}
+```
+
+- Response
+```json
+{
+	"type": "bearer",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTY0OTgxNjc0NCwiZXhwIjoxNjQ5ODIzOTQ0fQ.XveKAjZygT-00w6eoLD_htsCYZHP2nMlrlVUYWzHmoQ",
+	"refreshToken": null
+}
+```
+
+</br>
+
+### VERIFY SESSION - {{URL}}/session
+- Method > POST
+- Token > JWT
+- Body > Empty
+
+- Response
+```json
+{
+	"userId": 2,
+	"username": "usern",
+	"email": "usern@gmail.com",
+	"created_at": "2022-04-12 23:25:17",
+	"updated_at": "2022-04-12 23:25:17"
+}
+```
+
+</br>
+
+### GENERATE POINT - {{URL}}/newPointRegistry
+- Method > POST
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json
@@ -61,12 +123,12 @@ adonis serve --dev
 }
 ```
 
-### FETCH CURRENT DAY POINTS
+</br>
 
-- {{URL}}/:userId/showPoints
- - Params > :userId
- - Body > Empty
- - Método > GET
+### FETCH CURRENT DAY POINTS - {{URL}}/showPoints
+- Method > GET
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json
@@ -110,12 +172,14 @@ adonis serve --dev
 ]
 ```
 
-### POST NEW DAILY REGISTRY
-- {{URL}}/:userId/newPointRegistry
- - Params > :userId
- - Body > Empty
- - Método > POST
- 
+</br>
+
+### POST NEW DAILY REGISTRY - {{URL}}/registry
+- Method > POST
+- Token > JWT
+- Body > Empty
+
+-Response
 ```json
 {
 	"message": "Registro criado com sucesso",
@@ -124,43 +188,34 @@ adonis serve --dev
 }
 ```
 
-### GET DAILY REGISTRY BY MONTH
-- {{URL}}/:userId/showPoints
- - Params 
-	- :userId
-	- :month? OPTIONAL
- - Body > Empty
- - Método > GET
+</br>
+
+### {{URL}}/registry/:month? - GET DAILY REGISTRY BY MONTH
+- Method > GET
+- Params 
+ - :month? OPTIONAL
+- Token > JWT
+- Body > Empty
 
 - Response:
 ```json
 [
 	{
-		"userId": 1,
-		"username": "Student",
-		"email": "student@gmail.com",
-		"created_at": null,
-		"updated_at": null,
+		"userId": 2,
+		"username": "usern",
+		"email": "usern@gmail.com",
+		"created_at": "2022-04-12 23:25:17",
+		"updated_at": "2022-04-12 23:25:17",
 		"registry": [
 			{
-				"registryId": 1,
-				"user_id": 1,
-				"registryReferalDate": "2022-11-04",
-				"referalMonth": "ABRIL",
-				"hoursExceeded": 1,
-				"avaliableHours": 0.22,
-				"created_at": null,
-				"updated_at": null
-			},
-			{
-				"registryId": 23,
-				"user_id": 1,
-				"registryReferalDate": "2022-04-12",
+				"registryId": 24,
+				"user_id": 2,
+				"registryReferalDate": "2022-04-13",
 				"referalMonth": "ABRIL",
 				"hoursExceeded": 0,
 				"avaliableHours": -8,
-				"created_at": "2022-04-12 14:19:40",
-				"updated_at": "2022-04-12 14:19:40"
+				"created_at": "2022-04-12 23:45:07",
+				"updated_at": "2022-04-12 23:45:07"
 			}
 		]
 	}
