@@ -1,21 +1,36 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  // Container
+
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#0F62FE',
     justifyContent: 'center',
   },
 
-  image: {
-    marginBottom: 40,
+  cardContainer: {
+    display: 'flex',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    padding: 20,
+    borderRadius: 5,
   },
+
+  titleContainer: {
+    alignSelf: 'flex-start',
+    marginBottom: 30,
+    height: 45,
+  },
+
+  // Text
 
   inputView: {
     backgroundColor: '#F4F4F4',
     borderRadius: 5,
-    width: '85%',
+    width: '100%',
     height: 45,
     marginBottom: 20,
 
@@ -26,27 +41,26 @@ export const styles = StyleSheet.create({
     height: 50,
     flex: 1,
     padding: 10,
-    marginLeft: 20,
+    marginLeft: 0,
   },
 
   title: {
-    marginLeft: 30,
-    fontSize: 25,
+    fontSize: 32,
   },
 
-  forgot_button: {
+  forgotButtonText: {
     height: 30,
-    marginBottom: 30,
+    fontSize: 16,
   },
 
-  titleContainer: {
-    alignSelf: 'flex-start',
-    marginBottom: 30,
-    height: 40,
+  // Button
+  
+  forgotButton: {
+    height: 30,
   },
 
   loginBtn: {
-    width: '85%',
+    width: '100%',
     borderRadius: 5,
     height: 50,
     alignItems: 'center',
@@ -57,7 +71,7 @@ export const styles = StyleSheet.create({
 
   loginText: {
     color: '#ffff',
-  }
+  },
 });
 
 // ThemeColors: {
@@ -65,7 +79,7 @@ export const styles = StyleSheet.create({
 //   SecondaryColor: "#FFFFFF",
 //   Icon: "#FFFFFF",
 //   UI: "#F4F4F4",
-      
+
 // },
 
 // TextColors: {
