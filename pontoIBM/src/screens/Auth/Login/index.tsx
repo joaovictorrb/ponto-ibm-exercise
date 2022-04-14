@@ -1,22 +1,25 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {signIn} from '../../../mockup/login';
 import {styles} from './styles';
 import AuthContext from '../../../context/authContext';
 
 export default function Login() {
-
   // Aqui estamos puxando a funçao signIn do provider
-  const {signed, LogIn} = useContext(AuthContext);
-  
-  console.log(signed, LogIn)
+  const {userLogin} = useContext(AuthContext);
+
+  // Estado dos inputs
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
   // Pega o mockup e retorna de maneira assincrona no apertar do botao de Login
   async function HandleLogin() {
-    LogIn();
-
-    console.log(LogIn())
+    console.log(userLogin);
+    userLogin(login, password);
   }
+
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -29,7 +32,9 @@ export default function Login() {
             style={styles.TextInput}
             placeholder="Email"
             placeholderTextColor="#003f5c"
-            onChangeText={() => {}}
+            onChangeText={text => {
+              setLogin(text);
+            }}
           />
         </View>
 
@@ -39,7 +44,9 @@ export default function Login() {
             placeholder="Password"
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
-            onChangeText={() => {}}
+            onChangeText={text => {
+              setPassword(text);
+            }}
           />
         </View>
 
