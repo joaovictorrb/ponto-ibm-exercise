@@ -15,7 +15,7 @@ class SessionController {
 
     const token = await auth.attempt(data.email, data.password)
     
-    response.ok(token);
+    response.ok(token)
   }
 }
 

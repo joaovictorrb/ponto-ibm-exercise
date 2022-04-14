@@ -1,33 +1,49 @@
-import {useState, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import {useState, useCallback} from 'react';
 
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
+const useAxios = () => {
+  const [info, setInfo] = useState<Object | null>(null);
+  const [error, setError] = useState<String | null>(null);
+  const [loading, setLoading] = useState<Boolean>(false);
 
-axios.defaults.baseURL = 'http://127.0.0.1:3333/';
+  const request = useCallback(async (method, url, data) => {
+    let response;
+    const token = await AsyncStorage.getItem('Token');
 
-const useAxios = (axiosParams: AxiosRequestConfig) => {
-  const [response, setResponse] = useState<AxiosResponse>();
-  const [error, setError] = useState<AxiosError>();
-  const [loading, setLoading] = useState(true);
-
-  const request = async (params: AxiosRequestConfig) => {
     try {
-      console.log('dentro do try axios')
-      const result = await axios.request(params);
-      console.log(result)
-      setResponse(result);
-    } catch (err) {
-      setError(err);
+      setError(null);
+      setLoading(true);
+      response = await axios({
+        ...(token ? { 
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        } : {}),
+        method,
+        url: `http://10.0.2.2:3333/${url}`,
+        data,
+      });
+
+
+
+      if (response.status !== 200) throw new Error(response.message);
+    } catch (error) {
+      response = null; 
+      setError(error.message);
     } finally {
+      setInfo(response);
       setLoading(false);
+      return response;
     }
+  }, []);
+
+  return {
+    info,
+    loading,
+    error,
+    request,
   };
-
-  useEffect(() => {
-    request(axiosParams);
-  }, [request]);
-  
-
-  return {response, error, loading};
 };
 
 export default useAxios;

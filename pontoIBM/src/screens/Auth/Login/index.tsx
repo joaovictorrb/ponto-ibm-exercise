@@ -7,16 +7,15 @@ import AuthContext from '../../../context/authContext';
 
 export default function Login() {
   // Aqui estamos puxando a funçao signIn do provider
-  const {userLogin} = useContext(AuthContext);
+  const {SignIn} = useContext(AuthContext);
 
   // Estado dos inputs
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   // Pega o mockup e retorna de maneira assincrona no apertar do botao de Login
-  async function HandleLogin() {
-    console.log(userLogin);
-    userLogin(login, password);
+  function HandleLogin() {
+    SignIn(email, password);
   }
 
   const navigation = useNavigation();
@@ -33,7 +32,7 @@ export default function Login() {
             placeholder="Email"
             placeholderTextColor="#003f5c"
             onChangeText={text => {
-              setLogin(text);
+              setEmail(text);
             }}
           />
         </View>

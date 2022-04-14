@@ -1,33 +1,62 @@
-import React, {createContext, useCallback, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import useAxios from '../hooks/useAxios';
+import React, {createContext, FC, useCallback, useState} from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import {signIn} from '../mockup/login';
-import {AuthContextData, UserType} from '../@types/user';
-import {Alert} from 'react-native';
+import {AuthContextData, UserType} from '../@types/types'
+import useAxios from '../hooks/useAxios'
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-export const AuthProvider: React.FC = ({children}) => {
-  const [userIsLogged, setUserIsLogged] = useState<object | null>(null);
+export const AuthProvider: FC = ({children}) => {
+  const [userData, setUserData] = useState<UserType | {}>({})
+  const [isLogged, setIsLogged] = useState<AuthContextData | Boolean>(false) 
+  const [error, setError] = useState<String | null>(null)
+  const [loading, setLoading] = useState<Boolean>(false);
 
-  const [loggedUser, setLoggedUser] = useState<UserType>({});
+  const { request } = useAxios()
+
+  async function SignIn(email: String, password: String) {
+    try {
+      setError(null)
+      setLoading(true)
+      
+      const response = await request('post', 'login', {
+        email,
+        password,
+      })
+
+      const token = response?.data.token
+      await AsyncStorage.setItem('Token', token);
+
+      // await getUserData(token)
+    } catch (error) {
+      setError(error)
+      setIsLogged(false)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // FAZER FUNCAO QUE ADQUIRE OS DADOS DO USUARIO
+  // const getUserData = useCallback() {
+  //   async (token) => {
+  //     const response = await request('post', 'sessions');
+  //     setUserData(response.data);
+  //     setIsLogged(true);
+  //   }
+  // }
+
+  return (
+    <AuthContext.Provider value={{isLogged: false, user: {}, SignIn}}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export default AuthContext;
+/*
+  const [userData, setUserData] = useState<AuthContextData| null>(null);
   const [loading, setLoading] = useState<Boolean>();
   const [error, setError] = useState('');
-
-  // Codigo do Kaio. Funcional.
-  async function LogIn() {
-    const response = await signIn();
-
-    setUserIsLogged(response.user);
-  }
-
-  function LogOut() {
-    const response = signIn();
-
-    setUserIsLogged(null);
-  }
-  // -----------------------------
 
   // Definir se está logado ou nao.
   async function getUserSession(token: String) {
@@ -51,8 +80,6 @@ export const AuthProvider: React.FC = ({children}) => {
         },
       });
 
-      console.log(getUser);
-
       if (getUser.response?.status !== 201) {
         Alert.alert(getUser.error?.message as string);
         setError(getUser.error?.message as string);
@@ -70,17 +97,7 @@ export const AuthProvider: React.FC = ({children}) => {
       setLoading(true);
     }
   }
-
-  return (
-    <AuthContext.Provider
-      value={{signed: !!userIsLogged, userIsLogged, LogIn, LogOut, userLogin}}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export default AuthContext;
-
+*/
 // const userLogout = useCallback(
 //   async function () {
 //     setLoggedUser(null);
