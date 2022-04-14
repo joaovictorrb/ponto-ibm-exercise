@@ -1,10 +1,13 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { createContext } from 'react'
+import { UserContextType, IUser } from '../@types/user'
 
-export default function Context() {
-  return (
-    <View>
-      <Text>Context</Text>
-    </View>
-  )
+export const UserContext = createContext<UserContextType | null>(null)
+
+export const UserProvider = props => {
+
 }
+
+// export const UserContext = ({ children }) {
+
+// }
