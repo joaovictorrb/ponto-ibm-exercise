@@ -16,7 +16,7 @@ class RegistryController {
     let tmp;
 
     let getDailyPoints = (await user.points().where("date", dateNow).fetch()).toJSON()
-    let getRegistryDate = (await user.registry().where("registryReferalDate", dateNow).fetch()).toJSON()
+    let getRegistryDate = (await user.registries().where("registryReferalDate", dateNow).fetch()).toJSON()
 
     if(getRegistryDate && getRegistryDate.length !== 0) {
       return response.status(403).send({ error: { message: `Registro ${dateNow} já existe`, name: 'Forbidden', status: 403 } })
@@ -63,11 +63,11 @@ class RegistryController {
     const month = params.month
     if(!user) return response.status(400).send({ error: { message: 'Usuário não encontrado', name: 'Bad Request', status: 400 } })
 
-    let getRegistry = (await UserModel.query().with('registry').where('userId', userId).fetch()).toJSON()
+    let getRegistry = (await UserModel.query().with('registries').where('userId', userId).fetch()).toJSON()
     if(month){
       getRegistry = (
         await UserModel.query()
-          .with('registry', (builder) => {
+          .with('registries', (builder) => {
             builder.where('referalMonth', month.toUpperCase())
           })
           .where('userId', userId)

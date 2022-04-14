@@ -35,7 +35,7 @@ class User extends Model {
 		return this.hasMany('App/Models/Token')
 	}
 
-	registry() {
+	registries() {
 		return this.hasMany('App/Models/Registry')
 	}
 

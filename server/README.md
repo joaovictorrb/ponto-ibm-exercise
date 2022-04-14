@@ -30,9 +30,9 @@ adonis seed
 ```
 
 User registered:
-- Username: Student
-- Email: student@gmail.com
-- Password: Student123
+- Username: usern
+- Email: usern@gmail.com
+- Password: usern123
 
 ### RUN SERVER
 
@@ -132,44 +132,108 @@ adonis serve --dev
 
 - Response:
 ```json
-[   
-    {
-		"pointId": 17,
-		"user_id": 1,
-		"date": "2022-04-12",
-		"hour": "12:45",
-		"unixTimeStampMilli": "1649767527971",
-		"created_at": "2022-04-12 09:45:28",
-		"updated_at": "2022-04-12 09:45:28"
-	},
-	{
-		"pointId": 18,
-		"user_id": 1,
-		"date": "2022-04-12",
-		"hour": "12:45",
-		"unixTimeStampMilli": "1649767529257",
-		"created_at": "2022-04-12 09:45:29",
-		"updated_at": "2022-04-12 09:45:29"
-	},
-	{
-		"pointId": 19,
-		"user_id": 1,
-		"date": "2022-04-12",
-		"hour": "12:45",
-		"unixTimeStampMilli": "1649767530160",
-		"created_at": "2022-04-12 09:45:30",
-		"updated_at": "2022-04-12 09:45:30"
-	},
-	{
-		"pointId": 20,
-		"user_id": 1,
-		"date": "2022-04-12",
-		"hour": "12:45",
-		"unixTimeStampMilli": "1649767531907",
-		"created_at": "2022-04-12 09:45:31",
-		"updated_at": "2022-04-12 09:45:31"
-	}
-]
+{
+	"userId": 1,
+	"username": "usern",
+	"points": [
+		{
+			"pointId": 9,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 10,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 11,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 12,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 13,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 14,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 15,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 16,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 17,
+			"date": "2022-04-14",
+			"hour": "13:27",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 18,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 19,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 20,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 21,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 22,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": false
+		},
+		{
+			"pointId": 23,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": true
+		},
+		{
+			"pointId": 24,
+			"date": "2022-04-14",
+			"hour": "13:36",
+			"flagIsEntry": false
+		}
+	]
+}
 ```
 
 </br>

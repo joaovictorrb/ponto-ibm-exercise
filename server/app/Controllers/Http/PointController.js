@@ -40,7 +40,22 @@ class PointController {
 		if(!user) return response.status(400).send({ error: { message: 'Usuário não encontrado', name: 'Bad Request', status: 400 } })
 		
 		const dateNow = moment(Date.now()).utc().format('YYYY-MM-DD')
-		let getDailyPoints = (await user.points().where('date', dateNow).fetch()).toJSON()
+		const points = (await user.points().select('pointId' ,'date', 'hour').where('date', dateNow).fetch()).toJSON()
+		
+		console.log(points.length);
+
+		points.forEach((el, index) => {
+			el.flagIsEntry = false 
+			if(index%2 == 0) {
+				el.flagIsEntry = true 
+			}
+		})
+
+		let getDailyPoints = {}
+		getDailyPoints.userId = auth.user.userId
+		getDailyPoints.username = user.username
+		getDailyPoints.points = points
+
 
 		return getDailyPoints
 	}
