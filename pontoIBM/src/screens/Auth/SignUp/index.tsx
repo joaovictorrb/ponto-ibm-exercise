@@ -17,31 +17,33 @@ export default function SignUp() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Sign Up</Text>
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email."
-          placeholderTextColor="#003f5c"
-          onChangeText={email => setEmail(email)}
-        />
-      </View>
+      <View style={styles.cardContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Sign Up</Text>
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Email"
+            placeholderTextColor="#003f5c"
+            onChangeText={email => setEmail(email)}
+          />
+        </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={password => setPassword(password)}
-        />
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            onChangeText={password => setPassword(password)}
+          />
+        </View>
+
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
-      
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Sign Up</Text>
-      </TouchableOpacity>
     </View>
   );
 }

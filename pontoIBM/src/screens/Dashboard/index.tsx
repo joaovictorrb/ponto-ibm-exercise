@@ -1,12 +1,18 @@
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/Feather';
+import AuthContext from '../../context/authContext';
 
 export default function Dashboard() {
   const navigator = useNavigation();
+  const {LogOut} = useContext(AuthContext);
+
+  function handleLogOut() {
+    LogOut();
+  }
 
   return (
     <View style={styles.container}>
@@ -50,10 +56,8 @@ export default function Dashboard() {
         <TouchableOpacity
           style={styles.logoutButton}
           activeOpacity={0.8}
-          onPress={() => {
-            navigator.goBack;
-          }}>
-            <Icon name='power' style={styles.icon}/>
+          onPress={handleLogOut}>
+          <Icon name="log-out" style={styles.icon} />
         </TouchableOpacity>
       </View>
     </View>

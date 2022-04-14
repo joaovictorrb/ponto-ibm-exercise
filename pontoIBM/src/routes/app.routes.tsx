@@ -10,9 +10,9 @@ const AppStack = createStackNavigator();
 function AppRoutes() {
   return (
     <AppStack.Navigator
-    initialRouteName='Dashboard'  
-    screenOptions={{
-        headerShown: false
+      initialRouteName="Dashboard"
+      screenOptions={{
+        headerShown: false,
       }}>
       <AppStack.Screen name="Dashboard" component={Dashboard} />
       <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />
