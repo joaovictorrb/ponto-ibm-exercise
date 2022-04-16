@@ -1,11 +1,7 @@
-export interface UserType {
-  userId: Number
-  username: String
-	email: String
-}
-
 export interface AuthContextData {
+  userData: Object | null
   isLogged: Boolean
-  user: UserType | null
   SignIn(email: String, password: String): Promise<void>
+  SignOut(): void
+  getUserData(): Promise<void>
 }

@@ -8,15 +8,15 @@ import AuthContext from '../../context/authContext';
 
 export default function Dashboard() {
   const navigator = useNavigation();
-  const {LogOut} = useContext(AuthContext);
+  const {SignOut, userData} = useContext(AuthContext);
 
   function handleLogOut() {
-    LogOut();
+    SignOut();
   }
 
   return (
     <View style={styles.container}>
-      <Header title="Fulano da Silva" returnButton={false} />
+      <Header title={userData.username} returnButton={false} />
 
       <View style={styles.mainContent}>
         <View>

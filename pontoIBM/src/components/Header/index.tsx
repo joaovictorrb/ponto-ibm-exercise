@@ -1,8 +1,9 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+import AuthContext from '../../context/authContext';
 
 interface HeaderProps {
   title?: string;
@@ -11,6 +12,11 @@ interface HeaderProps {
 
 export default function Header({title, returnButton}: HeaderProps) {
   const navigation = useNavigation();
+
+  const { userData } = useContext(AuthContext)
+  console.log("=============userData -= HEADER==============")
+  console.log(userData)
+  console.log("=============userData -= HEADER==============")
 
   return (
     <View style={styles.header}>
