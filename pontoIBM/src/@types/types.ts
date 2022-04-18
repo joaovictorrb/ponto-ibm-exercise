@@ -5,3 +5,9 @@ export interface AuthContextData {
   SignOut(): void
   getUserData(): Promise<void>
 }
+
+export interface DataContextData {
+  userPoint: Object | null
+  isLogged: Boolean
+  getUserPoint(): Promise<void>
+}

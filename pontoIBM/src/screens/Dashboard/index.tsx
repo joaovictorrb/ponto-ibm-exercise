@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/Feather';
 import AuthContext from '../../context/authContext';
+import MainHeader from '../../components/MainHeader';
 
 export default function Dashboard() {
   const navigator = useNavigation();
@@ -16,7 +17,7 @@ export default function Dashboard() {
 
   return (
     <View style={styles.container}>
-      <Header title={userData.username} returnButton={false} />
+      <MainHeader returnButton={false} />
 
       <View style={styles.mainContent}>
         <View>

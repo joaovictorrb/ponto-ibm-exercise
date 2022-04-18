@@ -5,10 +5,8 @@ import AuthContext from '../context/authContext';
 import AppRoutes from './app.routes';
 
 function Routes() {
-  const { isLogged } = useContext(AuthContext);
-  console.log("===========ROUTES=============");
-  console.log(isLogged);
-  console.log("===========ROUTES=============");
+  const {isLogged} = useContext(AuthContext);
+
   return isLogged ? <AppRoutes /> : <AuthRoutes />;
 }
 
