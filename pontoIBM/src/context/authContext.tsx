@@ -1,58 +1,61 @@
-import React, {createContext, FC, useCallback, useState} from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, {createContext, FC, useCallback, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {AuthContextData, UserType} from '../@types/types'
-import useAxios from '../hooks/useAxios'
+import {AuthContextData, UserType} from '../@types/types';
+import useAxios from '../hooks/useAxios';
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData)
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: FC = ({children}) => {
-  const [userData, setUserData] = useState<UserType | {}>({})
-  const [isLogged, setIsLogged] = useState<AuthContextData | Boolean>(false) 
-  const [error, setError] = useState<String | null>(null)
+  const [userData, setUserData] = useState<UserType | {}>({});
+  const [isLogged, setIsLogged] = useState<any>();
+  const [error, setError] = useState<String | null>(null);
   const [loading, setLoading] = useState<Boolean>(false);
 
-  const { request } = useAxios()
+  const {request} = useAxios();
 
   async function SignIn(email: String, password: String) {
     try {
-      setError(null)
-      setLoading(true)
-      
+      setError(null);
+      setLoading(true);
+
       const response = await request('post', 'login', {
         email,
         password,
-      })
+      });
 
-      const token = response?.data.token
+      console.log(response?.data);
+      
+      const token = response?.data.token;
       await AsyncStorage.setItem('Token', token);
 
-      // await getUserData(token)
+      await getUserData();
     } catch (error) {
-      setError(error)
-      setIsLogged(false)
+      setError(error);
+      setIsLogged(false);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   // FAZER FUNCAO QUE ADQUIRE OS DADOS DO USUARIO
-  // const getUserData = useCallback() {
-  //   async (token) => {
-  //     const response = await request('post', 'sessions');
-  //     setUserData(response.data);
-  //     setIsLogged(true);
-  //   }
-  // }
+  const getUserData = async () => {
+    const response = await request('post', 'sessions', {});
+    console.log(response?.data);
+
+    setUserData(response?.data);
+    setIsLogged(true);
+  };
 
   return (
-    <AuthContext.Provider value={{isLogged: false, user: {}, SignIn}}>
+    <AuthContext.Provider value={{isLogged, userData: {}, SignIn}}>
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 export default AuthContext;
+
 /*
   const [userData, setUserData] = useState<AuthContextData| null>(null);
   const [loading, setLoading] = useState<Boolean>();

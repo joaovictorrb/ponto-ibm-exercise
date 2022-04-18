@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Dashboard from '../screens/Dashboard';
 import Espelho from '../screens/Dashboard/Espelho';
 import ConsultarPontos from '../screens/Dashboard/ConsultarPontos';
 import RegistrarPontos from '../screens/Dashboard/RegistrarPontos';
+import AuthContext from '../context/authContext';
 
 const AppStack = createStackNavigator();
 

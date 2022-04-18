@@ -1,21 +1,28 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+import AuthContext from '../../context/authContext';
 
 interface HeaderProps {
-  title?: string;
   returnButton: boolean;
 }
 
-export default function Header({title, returnButton}: HeaderProps) {
+export default function Header({returnButton}: HeaderProps) {
+  
+  // To-do: fazer retornar os dados corretamente.
+  const {userData} = useContext(AuthContext);
+
+  console.log(userData);
+  // ------
+  
   const navigation = useNavigation();
 
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{userData}</Text>
         {returnButton === true ? (
           <View style={styles.buttonContainer}>
             <TouchableOpacity

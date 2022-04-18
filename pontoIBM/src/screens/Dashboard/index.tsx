@@ -8,15 +8,15 @@ import AuthContext from '../../context/authContext';
 
 export default function Dashboard() {
   const navigator = useNavigation();
-  const {LogOut} = useContext(AuthContext);
+  // const {LogOut} = useContext(AuthContext);
 
-  function handleLogOut() {
-    LogOut();
-  }
+  // function handleLogOut() {
+  //   LogOut();
+  // }
 
   return (
     <View style={styles.container}>
-      <Header title="Fulano da Silva" returnButton={false} />
+      <Header returnButton={false} />
 
       <View style={styles.mainContent}>
         <View>
@@ -56,7 +56,7 @@ export default function Dashboard() {
         <TouchableOpacity
           style={styles.logoutButton}
           activeOpacity={0.8}
-          onPress={handleLogOut}>
+          onPress={() => {}}>
           <Icon name="log-out" style={styles.icon} />
         </TouchableOpacity>
       </View>

@@ -5,9 +5,8 @@ import AuthContext from '../context/authContext';
 import AppRoutes from './app.routes';
 
 function Routes() {
-  const {signed} = useContext(AuthContext);
-
-  return signed ? <AppRoutes /> : <AuthRoutes />;
+  const {isLogged} = useContext(AuthContext);
+  return isLogged ? <AppRoutes /> : <AuthRoutes />;
 }
 
 export default Routes;

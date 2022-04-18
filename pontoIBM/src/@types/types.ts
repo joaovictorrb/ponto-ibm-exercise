@@ -6,6 +6,6 @@ export interface UserType {
 
 export interface AuthContextData {
   isLogged: Boolean
-  user: UserType | null
+  userData: UserType | {}
   SignIn(email: String, password: String): Promise<void>
 }
