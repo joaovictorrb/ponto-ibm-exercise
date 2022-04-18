@@ -1,9 +1,24 @@
 import {View, Text, FlatList} from 'react-native';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {styles} from './styles';
 import Header from '../../../components/Header';
+import DataContext from '../../../context/dataContext';
 
 export default function ConsultarPontos() {
+
+  // To-do's:
+  // 1. Implementar a call do token dentro do context e transportar-la aqui.
+  // 2. Com que a lista de pontos seja exibida num UseEffect, assim atualizando sempre que a tela for renderizada.
+
+  const {userPoint} = useContext(DataContext);
+
+  // Atualizaçao auto da tela de pontos ao iniciar.
+  // useEffect(() => {
+
+  // }
+  // , []);
+
+
   const mockup = [
     {
       pointId: '17',

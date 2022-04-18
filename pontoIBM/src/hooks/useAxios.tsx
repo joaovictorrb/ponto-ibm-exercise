@@ -10,26 +10,24 @@ const useAxios = () => {
   const request = useCallback(async (method, url, data) => {
     let response;
     const token = await AsyncStorage.getItem('Token');
-
     try {
       setError(null);
       setLoading(true);
       response = await axios({
-        ...(token ? { 
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        } : {}),
+        ...(token
+          ? {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          : {}),
         method,
         url: `http://10.0.2.2:3333/${url}`,
         data,
       });
-
-
-
       if (response.status !== 200) throw new Error(response.message);
     } catch (error) {
-      response = null; 
+      response = null;
       setError(error.message);
     } finally {
       setInfo(response);

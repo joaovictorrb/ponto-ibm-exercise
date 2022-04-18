@@ -1,5 +1,5 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
@@ -10,13 +10,21 @@ interface HeaderProps {
   returnButton: boolean;
 }
 
-export default function Header({title, returnButton}: HeaderProps) {
+export default function MainHeader({title, returnButton}: HeaderProps) {
   const navigation = useNavigation();
+
+  const {userData} = useContext(AuthContext);
+  // console.log('=============userData -= HEADER==============');
+  // console.log(userData);
+  // console.log('=============userData -= HEADER==============');
 
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>
+          Olá {userData?.username}, {'\n'}
+          bem vindo ao IBM@Hours
+        </Text>
         {returnButton === true ? (
           <View style={styles.buttonContainer}>
             <TouchableOpacity
