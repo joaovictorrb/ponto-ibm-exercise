@@ -1,7 +1,6 @@
 import React, {
   createContext,
   FC,
-  useCallback,
   useEffect,
   useState,
 } from 'react';
@@ -42,7 +41,7 @@ export const AuthProvider: FC = ({children}) => {
 
   const getUserData = async () => {
     const response = await request('post', 'sessions', {});
-    setUserData(response?.data);
+    setUserData(response?.data);    
   };
 
   async function SignOut() {
@@ -69,7 +68,7 @@ export const AuthProvider: FC = ({children}) => {
           setLoading(false);
         }
       } else {
-        isLogged: !!userData
+        isLogged: !!userData;
       }
     }
     autoLogin();
@@ -77,7 +76,7 @@ export const AuthProvider: FC = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{isLogged: !!userData, userData, SignIn, SignOut, getUserData}}>
+      value={{isLogged: !!userData, userData, SignIn, SignOut}}>
       {children}
     </AuthContext.Provider>
   );
