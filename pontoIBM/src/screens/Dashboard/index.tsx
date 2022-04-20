@@ -2,14 +2,13 @@ import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useContext} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/Feather';
 import AuthContext from '../../context/authContext';
 import MainHeader from '../../components/MainHeader';
 
 export default function Dashboard() {
   const navigator = useNavigation();
-  const {SignOut, userData} = useContext(AuthContext);
+  const {SignOut} = useContext(AuthContext);
 
   function handleLogOut() {
     SignOut();

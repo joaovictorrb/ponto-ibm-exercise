@@ -5,25 +5,32 @@ import useAxios from '../hooks/useAxios';
 const DataContext = createContext<DataContextData>({} as DataContextData);
 
 export const DataProvider: FC = ({children}) => {
-  const [userPoint, setUserPoint] = useState<Object | null>(null);
-
   const {request} = useAxios();
 
-  // Faz a requisiçao dos dados do usuario, neste caso, quero o Token.
+  const [userPoint, setUserPoint] = useState<Object | null>(null);
+  const [userRegistry, setUserRegistry] = useState<Object | null>(null);
+
+  // Faz a requisiçao dos dados do usuario. Neste caso os pontos do dia.
   const getUserPoint = async () => {
     const response = await request('get', 'showPoints', {});
-
-    
-    setUserPoint(response?.data);
+    console.log('=========== Response - GetUserPoint =============');
+    console.log(response?.data[0].points);
+    console.log('=========== Response - GetUserPoint =============');
+    setUserPoint(response?.data[0].points);
   };
 
-  console.log('===========DataContext=============');
-  console.log(userPoint);
-  console.log('===========DataContext=============');
-  
+  // Faz a requisiçao dos dados do usuario. Neste caso, o registro de pontos.
+  const getUserRegistry = async () => {
+    const response = await request('get', 'registry', {});
+    console.log('=========== Response - GetUserRegistry =============');
+    console.log(response?.data[0].registries);
+    console.log('=========== Response - GetUserRegistry =============');
+    setUserRegistry(response?.data[0].registries);
+  };
+
   return (
     <DataContext.Provider
-      value={{isLogged: !!userPoint, userPoint, getUserPoint}}>
+      value={{userPoint, userRegistry, getUserPoint, getUserRegistry}}>
       {children}
     </DataContext.Provider>
   );

@@ -27,7 +27,7 @@ const useAxios = () => {
       });
       if (response.status !== 200) throw new Error(response.message);
     } catch (error) {
-      response = null;
+      console.log('error')
       setError(error.message);
     } finally {
       setInfo(response);
