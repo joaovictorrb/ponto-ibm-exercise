@@ -18,9 +18,8 @@ class RegistryController {
     let getDailyPoints = (await user.points().where("date", dateNow).fetch()).toJSON()
     let getRegistryDate = (await user.registries().where("registryReferalDate", dateNow).fetch()).toJSON()
 
-    if(getRegistryDate && getRegistryDate.length !== 0) {
+    if(getRegistryDate && getRegistryDate.length !== 0)
       return response.status(403).send({ error: { message: `Registro ${dateNow} já existe`, name: 'Forbidden', status: 403 } })
-    }
 
     if(getDailyPoints.length % 2 == 1)
       return response.status(400).send({ error: { message: 'Por favor, marcar o ponto de saída', name: 'Bad Request', status: 400 } })
@@ -74,7 +73,7 @@ class RegistryController {
           .fetch()
         ).toJSON()
     }
-    return getRegistry
+    return getRegistry[0]
   }
 }
 

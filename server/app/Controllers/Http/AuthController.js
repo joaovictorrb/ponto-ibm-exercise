@@ -4,7 +4,6 @@ class SessionController {
   async verifySession({ response, auth }) {
     try {
       await auth.check();
-
       let responseData = {}
       responseData.userId = auth.user.userId
       responseData.username = auth.user.username
