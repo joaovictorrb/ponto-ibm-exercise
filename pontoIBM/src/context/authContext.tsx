@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContextData} from '../@types/types';
 import useAxios from '../hooks/useAxios';
+import {NavigationRouteContext} from '@react-navigation/native';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -34,10 +35,25 @@ export const AuthProvider: FC = ({children}) => {
     }
   }
 
-  const getUserData = async () => {
+  async function SignUp(email: String, username: String, password: String) {
+    try {
+      setError(null);
+      const response = await request('post', 'register', {
+        username,
+        email,
+        password,
+      });
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function getUserData() {
     const response = await request('post', 'sessions', {});
     setUserData(response?.data);
-  };
+  }
 
   async function SignOut() {
     await AsyncStorage.removeItem('Token');
@@ -61,7 +77,7 @@ export const AuthProvider: FC = ({children}) => {
           setLoading(false);
         }
       } else {
-        isLogged: !!userData;
+        isLogged: false;
       }
     }
     autoLogin();
@@ -69,7 +85,7 @@ export const AuthProvider: FC = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{isLogged: !!userData, userData, SignIn, SignOut}}>
+      value={{isLogged: !!userData, userData, SignIn, SignOut, SignUp}}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,13 +8,20 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import AuthContext from '../../../context/authContext';
 
 import {styles} from './styles';
 
 export default function SignUp() {
+  const {SignUp} = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  function HandleSignUp() {
+    SignUp(email, username, password);
+  }
 
   return (
     <View style={styles.container}>
@@ -51,7 +58,7 @@ export default function SignUp() {
         </View>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Sign Up</Text>
+          <Text style={styles.loginText} onPress={HandleSignUp}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
