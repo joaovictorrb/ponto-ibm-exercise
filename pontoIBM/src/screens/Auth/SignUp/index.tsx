@@ -13,6 +13,7 @@ import {styles} from './styles';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   return (
@@ -27,6 +28,15 @@ export default function SignUp() {
             placeholder="Email"
             placeholderTextColor="#003f5c"
             onChangeText={email => setEmail(email)}
+          />
+        </View>
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Username"
+            placeholderTextColor="#003f5c"
+            onChangeText={username => setUsername(username)}
           />
         </View>
 

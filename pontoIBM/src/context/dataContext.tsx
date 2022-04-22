@@ -14,18 +14,18 @@ export const DataProvider: FC = ({children}) => {
   const getUserPoint = async () => {
     const response = await request('get', 'showPoints', {});
     console.log('=========== Response - GetUserPoint =============');
-    console.log(response?.data[0].points);
+    console.log(response?.data.points);
     console.log('=========== Response - GetUserPoint =============');
-    setUserPoint(response?.data[0].points);
+    setUserPoint(response?.data.points);
   };
 
   // Faz a requisiçao dos dados do usuario. Neste caso, o registro de pontos.
   const getUserRegistry = async () => {
     const response = await request('get', 'registry', {});
     console.log('=========== Response - GetUserRegistry =============');
-    console.log(response?.data[0].registries);
+    console.log(response?.data.registries);
     console.log('=========== Response - GetUserRegistry =============');
-    setUserRegistry(response?.data[0].registries);
+    setUserRegistry(response?.data.registries);
   };
 
   return (

@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  FC,
-  useEffect,
-  useState,
-} from 'react';
+import React, {createContext, FC, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContextData} from '../@types/types';
@@ -41,18 +36,16 @@ export const AuthProvider: FC = ({children}) => {
 
   const getUserData = async () => {
     const response = await request('post', 'sessions', {});
-    setUserData(response?.data);    
+    setUserData(response?.data);
   };
 
   async function SignOut() {
     await AsyncStorage.removeItem('Token');
     setUserData(null);
-    setError('');
     setLoading(false);
   }
 
   // Verificaçao do token para o login. AutoLogin.
-
   useEffect(() => {
     async function autoLogin() {
       const token = await AsyncStorage.getItem('Token');
