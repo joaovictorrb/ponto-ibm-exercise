@@ -270,7 +270,7 @@ adonis serve --dev
 		"email": "usern@gmail.com",
 		"created_at": "2022-04-12 23:25:17",
 		"updated_at": "2022-04-12 23:25:17",
-		"registry": [
+		"registry":                                                                                       
 			{
 				"registryId": 24,
 				"user_id": 2,
