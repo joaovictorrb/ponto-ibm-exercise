@@ -10,7 +10,9 @@ export interface DataContextData {
   userPoint: Object | null;
   userRegistry: Object | null;
   flagIsEntry: Boolean;
+
   getUserPoint(): Promise<void>;
   getUserRegistry(): Promise<void>;
   handleSubmit(event: any): Promise<void>;
+  submitToRegistry(): Promise<void>;
 }

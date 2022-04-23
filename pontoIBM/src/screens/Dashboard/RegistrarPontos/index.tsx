@@ -11,7 +11,7 @@ export default function RegistrarPontos() {
 
   // Baseado nessa flag, o Finalizar o dia vai ser mostrado ou nao / exibir erro ou algo assim.
 
-  const {handleSubmit} = useContext(DataContext);
+  const {handleSubmit, submitToRegistry} = useContext(DataContext);
 
   const flagIsEntry = true;
 
@@ -38,7 +38,7 @@ export default function RegistrarPontos() {
         <TouchableOpacity
           style={styles.sendDataButton}
           activeOpacity={0.8}
-          // onPress={submitToRegistry}
+          onPress={submitToRegistry}
           >
           <Text style={styles.sendDataButtonText}>Finalizar o dia</Text>
         </TouchableOpacity>

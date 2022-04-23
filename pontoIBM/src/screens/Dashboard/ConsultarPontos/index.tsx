@@ -30,7 +30,6 @@ export default function ConsultarPontos() {
                 <Text style={styles.cardTitle}>Entrada</Text>
               )}
               <Text style={styles.cardText}>Hora: {item.hour} </Text>
-              <Text style={styles.cardText}>Flag: {item.flagisEntry} </Text>
             </View>
           )}
         />

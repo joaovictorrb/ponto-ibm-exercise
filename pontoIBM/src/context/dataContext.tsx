@@ -10,6 +10,7 @@ export const DataProvider: FC = ({children}) => {
 
   const [userPoint, setUserPoint] = useState<Object | null>(null);
   const [userRegistry, setUserRegistry] = useState<Object | null>(null);
+  const [recordPoints, setRecordPoints] = useState<Object | null>(null);
   const [flagIsEntry, setFlagIsEntry] = useState<boolean>(false);
 
   // Faz a requisiçao dos dados do usuario. Neste caso os pontos do dia.
@@ -43,6 +44,20 @@ export const DataProvider: FC = ({children}) => {
     return Alert.alert('Successfully saved point.');
   }, []);
 
+  const submitToRegistry = async () => {
+    const response = await request('post', 'registry', {});
+    console.log('=========== Response - submitToRegistry =============');
+    console.log(response?.data.points);
+    console.log('=========== Response - submitToRegistry =============');
+
+    if (response?.status !== 201) {
+      return Alert.alert('Alguma coisa deu errado');
+    }
+
+    return Alert.alert('Successfully saved point.');
+    setRecordPoints(response?.data);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -52,6 +67,7 @@ export const DataProvider: FC = ({children}) => {
         getUserRegistry,
         flagIsEntry,
         handleSubmit,
+        recordPoints,
       }}>
       {children}
     </DataContext.Provider>
