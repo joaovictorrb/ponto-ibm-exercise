@@ -56,16 +56,16 @@ export default function Espelho() {
 
       <View style={styles.mainContent}>
         <FlatList
-          data={userRegistry}
+          data={userRegistry as any}
           renderItem={({item}) => (
             <View style={styles.card}>
-              <Text style={styles.cardTitle}>{item.referalMonth}</Text>
-
               {item.registryId % 2 ? (
-                <Text style={styles.cardText}>Entrada</Text>
+                <Text style={styles.cardTitle}>Entrada</Text>
               ) : (
-                <Text style={styles.cardText}>Saida</Text>
+                <Text style={styles.cardTitle}>Saida</Text>
               )}
+
+              <Text style={styles.cardTitle}>{item.referalMonth}</Text>
 
               <Text style={styles.cardText}>{item.created_at}</Text>
               <Text style={styles.cardText}>{item.updated_at}</Text>
@@ -77,6 +77,10 @@ export default function Espelho() {
     </View>
   );
 }
+
+// To-do:
+// - Um layout legal dos cartoes
+// Um seletor que é um filtrozinho que pega especificamente de cada mes escolhido.
 
 //             {item.registry.registryId % 2 ? (
 //   <Text style={styles.cardTitle}>Entrada</Text>

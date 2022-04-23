@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContextData} from '../@types/types';
 import useAxios from '../hooks/useAxios';
+import { Alert } from 'react-native';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -39,7 +40,23 @@ export const AuthProvider: FC = ({children}) => {
     }
   }
 
-  const getUserData = async () => {
+  async function SignUp(email: String, username: String, password: String) {
+    try {
+      setError(null);
+      const response = await request('post', 'register', {
+        username,
+        email,
+        password,
+      });
+    } catch (error) {
+      Alert.alert('Alguma coisa deu errado,');
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function getUserData() {
     const response = await request('post', 'sessions', {});
     setUserData(response?.data);    
   };

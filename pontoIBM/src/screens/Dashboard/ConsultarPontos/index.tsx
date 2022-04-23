@@ -69,6 +69,7 @@ export default function ConsultarPontos() {
                 <Text style={styles.cardTitleAlt}>Saida</Text>
               )}
               <Text style={styles.cardText}>Hora: {item.hour} </Text>
+              <Text style={styles.cardText}>Data: {item.date} </Text>
             </View>
           )}
         />
