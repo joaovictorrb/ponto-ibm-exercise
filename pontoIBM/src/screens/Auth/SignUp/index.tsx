@@ -1,13 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import AuthContext from '../../../context/authContext';
 
 import {styles} from './styles';
@@ -58,7 +50,9 @@ export default function SignUp() {
         </View>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText} onPress={HandleSignUp}>Sign Up</Text>
+          <Text style={styles.loginText} onPress={HandleSignUp}>
+            Sign Up
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
