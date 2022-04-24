@@ -13,33 +13,22 @@ export default function RegistrarPontos() {
 
   const {handleSubmit, submitToRegistry} = useContext(DataContext);
 
-  const flagIsEntry = true;
-
   return (
     <View style={styles.container}>
       <Header title="Registrar Ponto" returnButton={true} />
       <TouchableOpacity></TouchableOpacity>
       <View style={styles.mainContent}>
-        {flagIsEntry ? (
-          <TouchableOpacity
-            style={styles.button}
-            activeOpacity={0.8}
-            onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Marcar ponto</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={styles.button}
-            activeOpacity={0.8}
-            onPress={handleSubmit}>
-            <Text style={styles.buttonText}>O ponto foi marcado</Text>
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.8}
+          onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Marcar ponto</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.sendDataButton}
           activeOpacity={0.8}
-          onPress={submitToRegistry}
-          >
+          onPress={submitToRegistry}>
           <Text style={styles.sendDataButtonText}>Finalizar o dia</Text>
         </TouchableOpacity>
       </View>

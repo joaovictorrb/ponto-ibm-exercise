@@ -20,24 +20,17 @@ export default function Espelho() {
           data={userRegistry as any}
           renderItem={({item}) => (
             <View style={styles.card}>
-              <Text style={styles.cardTitle}>{item.referalMonth.toUpperCase()}</Text>
-
-              {/* Conditional dos titulos */}
-
-              {/* {item.registryId % 2 ? (
-                <Text style={styles.cardText}>Entrada</Text>
-              ) : (
-                <Text style={styles.cardText}>Saida</Text>
-              )} */}
-
-              {/* Conditional do overtime */}
-
-              {item.hoursExceeded > 0 ? (
-                <Text style={styles.cardText}>Horas excedidas</Text>
-              ) : null}
-
-              <Text style={styles.cardText}>{item.created_at}</Text>
-              <Text style={styles.cardText}>{item.updated_at}</Text>
+              <View style={styles.cardHeader}>
+                <Text style={styles.cardTitle}>
+                  {item.referalMonth.toUpperCase()}
+                </Text>
+                {item.hoursExceeded > 0 ? (
+                  <Text style={styles.cardAlert}>Horas excedidas</Text>
+                ) : null}
+              </View>
+              <Text style={styles.cardText}>
+                Registrado em: {item.registryReferalDate}
+              </Text>
             </View>
           )}
           keyExtractor={item => item.registryId}
@@ -47,7 +40,7 @@ export default function Espelho() {
   );
 }
 
-//             {item.registry.registryId % 2 ? (
+// {item.registry.registryId % 2 ? (
 //   <Text style={styles.cardTitle}>Entrada</Text>
 // ) : (
 //   <Text style={styles.cardTitleAlt}>Saida</Text>

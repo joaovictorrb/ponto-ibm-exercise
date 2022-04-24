@@ -9,6 +9,7 @@ export interface AuthContextData {
 export interface DataContextData {
   userPoint: Object | null;
   userRegistry: Object | null;
+  recordPoints: Object | null;
   flagIsEntry: Boolean;
 
   getUserPoint(): Promise<void>;
