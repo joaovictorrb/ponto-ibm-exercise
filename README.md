@@ -1,9 +1,12 @@
-O aplicativo foi feito com: 
+### Autores: 
+- Kaio Eduardo (front-end)
+- Joao Braum (back-end)
+
+### O aplicativo foi feito com: 
 - React Native (Mobile)
 - Node (Back-end)
 
-Requisitos do aplicativo: 
-
+### Requisitos do aplicativo: 
 -- Tarefa do Front: Fazer um aplicativo que controle o ponto de um usuário
 * O aplicativo deve fornecer meios de batimento de entrada e saída e calcular as horas trabalhadas no dia
 * O aplicativo deve mostrar a folha espelho do ponto do mes
