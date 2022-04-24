@@ -10,9 +10,9 @@ export const DataProvider: FC = ({children}) => {
 
   const [userPoint, setUserPoint] = useState<Object | null>(null);
   const [userRegistry, setUserRegistry] = useState<Object | null>(null);
+  const [recordPoints, setRecordPoints] = useState<Object | null>(null);
   const [flagIsEntry, setFlagIsEntry] = useState<boolean>(false);
 
-  // Faz a requisiçao dos dados do usuario. Neste caso os pontos do dia.
   const getUserPoint = async () => {
     const response = await request('get', 'showPoints', {});
     console.log('=========== Response - GetUserPoint =============');
@@ -21,7 +21,6 @@ export const DataProvider: FC = ({children}) => {
     setUserPoint(response?.data.points);
   };
 
-  // Faz a requisiçao dos dados do usuario. Neste caso, o registro de pontos.
   const getUserRegistry = async () => {
     const response = await request('get', 'registry', {});
     console.log('=========== Response - GetUserRegistry =============');
@@ -40,8 +39,27 @@ export const DataProvider: FC = ({children}) => {
       return Alert.alert('Alguma coisa deu errado');
     }
     setFlagIsEntry(true);
-    return Alert.alert('Successfully saved point.');
+    return Alert.alert('O ponto foi registrado com sucesso!');
   }, []);
+
+  const submitToRegistry = useCallback( async function submitToRegistry() {
+    const response = await request('post', 'registry', {});
+    console.log('=========== Response - submitToRegistry =============');
+    console.log(response?.data);
+    console.log('=========== Response - submitToRegistry =============');
+
+    if (response?.status !== 201) {
+      return Alert.alert('Alguma coisa deu errado');
+    }
+
+    setRecordPoints(response?.data);
+    return Alert.alert('Os pontos foram enviados com sucesso!');
+  }, []);
+
+  // Acho que nao estou sabendo enviar os dados, tenho que rever o submitToRegistry.
+  // - dados estao sendo recebidos
+  // - dados estao sendo gerados
+  // - Há um erro estranho no submitToRegistry, porem n sei dizer se é uma resposta padrao ou algo assim.
 
   return (
     <DataContext.Provider
@@ -52,6 +70,8 @@ export const DataProvider: FC = ({children}) => {
         getUserRegistry,
         flagIsEntry,
         handleSubmit,
+        recordPoints,
+        submitToRegistry,
       }}>
       {children}
     </DataContext.Provider>

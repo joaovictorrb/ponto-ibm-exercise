@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContextData} from '../@types/types';
 import useAxios from '../hooks/useAxios';
-import {NavigationRouteContext} from '@react-navigation/native';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
