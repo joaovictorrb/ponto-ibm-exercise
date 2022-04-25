@@ -31,6 +31,14 @@ export default function Espelho() {
               <Text style={styles.cardText}>
                 Registrado em: {item.registryReferalDate}
               </Text>
+
+              <Text style={styles.cardText}>
+                Horas estouradas: {item.hoursExceeded}
+              </Text>
+
+              <Text style={styles.cardText}>
+                Horas a cumprir: {item.avaliableHours}
+              </Text>
             </View>
           )}
           keyExtractor={item => item.registryId}

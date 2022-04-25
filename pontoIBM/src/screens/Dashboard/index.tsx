@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useContext} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
