@@ -38,6 +38,19 @@ export const styles = StyleSheet.create({
     color: 'black',
   },
 
+  cardAlert: {
+    fontWeight: '300',
+    fontStyle: 'normal',
+    fontSize: 18,
+    marginLeft: 10,
+    marginTop: 5,
+    alignSelf: 'flex-start',
+    color: 'white',
+    backgroundColor: 'red',
+    padding: 5,
+    borderRadius: 5,
+  },
+
   cardTitle: {
     fontWeight: '300',
     fontStyle: 'normal',
@@ -67,7 +80,13 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     backgroundColor: '#ffffff',
-    
+  },
+
+  cardHeader: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    textAlign: 'left',
+    justifyContent: 'space-between',
   },
 });
 

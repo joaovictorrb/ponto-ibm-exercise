@@ -14,10 +14,10 @@ function AppRoutes() {
       screenOptions={{
         headerShown: false,
       }}>
-      <AppStack.Screen name="Dashboard" component={Dashboard} />
-      <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />
-      <AppStack.Screen name="RegistrarPontos" component={RegistrarPontos} />
-      <AppStack.Screen name="Espelho" component={Espelho} />
+        <AppStack.Screen name="Dashboard" component={Dashboard} />
+        <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />
+        <AppStack.Screen name="RegistrarPontos" component={RegistrarPontos} />
+        <AppStack.Screen name="Espelho" component={Espelho} />
     </AppStack.Navigator>
   );
 }
