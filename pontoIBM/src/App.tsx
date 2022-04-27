@@ -17,3 +17,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+// Versao perfeita do projeto
