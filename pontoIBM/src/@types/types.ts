@@ -13,7 +13,7 @@ export interface DataContextData {
   flagIsEntry: Boolean;
 
   getUserPoint(): Promise<void>;
-  getUserRegistry(): Promise<void>;
+  getUserRegistry(monthInput: string): Promise<void>;
   handleSubmit(event: any): Promise<void>;
   submitToRegistry(): Promise<void>;
 }

@@ -24,7 +24,7 @@ export default function Dashboard() {
             style={styles.button}
             activeOpacity={0.8}
             onPress={() => {
-              navigator.navigate('RegistrarPontos');
+              navigator.navigate('RegistrarPontos' as any);
             }}>
             <Text style={styles.buttonText}>Registrar pontos</Text>
           </TouchableOpacity>
@@ -35,7 +35,7 @@ export default function Dashboard() {
             style={styles.button}
             activeOpacity={0.8}
             onPress={() => {
-              navigator.navigate('ConsultarPontos');
+              navigator.navigate('ConsultarPontos' as any);
             }}>
             <Text style={styles.buttonText}>Consultar pontos</Text>
           </TouchableOpacity>
@@ -46,7 +46,7 @@ export default function Dashboard() {
             style={styles.button}
             activeOpacity={0.8}
             onPress={() => {
-              navigator.navigate('Espelho');
+              navigator.navigate('Espelho' as any);
             }}>
             <Text style={styles.buttonText}>Espelho</Text>
           </TouchableOpacity>

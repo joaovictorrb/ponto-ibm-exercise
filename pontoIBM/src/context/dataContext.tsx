@@ -21,13 +21,19 @@ export const DataProvider: FC = ({children}) => {
     setUserPoint(response?.data.points);
   };
 
-  const getUserRegistry = async () => {
-    const response = await request('get', 'registry', {});
+  // Falta implementar o filtro de mes no request 
+  const getUserRegistry = useCallback( async (monthInput: string) => {
+    const response = await request('get', `registry/${monthInput}`, {});
+    
+    console.log('=========== Response - MonthInput =============');
+    console.log(monthInput);
+    console.log('=========== Response - MonthInput =============');
+    
     console.log('=========== Response - GetUserRegistry =============');
     console.log(response?.data.registries);
     console.log('=========== Response - GetUserRegistry =============');
     setUserRegistry(response?.data.registries);
-  };
+  }, []);
 
   const handleSubmit = useCallback(async function handleSubmit() {
     const response = await request('post', 'newPointRegistry', {});
@@ -56,11 +62,6 @@ export const DataProvider: FC = ({children}) => {
     return Alert.alert('Os pontos foram enviados com sucesso!');
   }, []);
 
-  // Acho que nao estou sabendo enviar os dados, tenho que rever o submitToRegistry.
-  // - dados estao sendo recebidos
-  // - dados estao sendo gerados
-  // - Há um erro estranho no submitToRegistry, porem n sei dizer se é uma resposta padrao ou algo assim.
-
   return (
     <DataContext.Provider
       value={{
@@ -80,21 +81,10 @@ export const DataProvider: FC = ({children}) => {
 
 export default DataContext;
 
-// Esquema de registro do ponto
+// To-do list:
+// 1. Fazer filtro de mes dentro do Espelho
+// 2. Fazer com que cada bagulhinho do espelho seja um botao e exiba os pontos registrados no dia
 
-// const OnClickSubmit = useCallback(
-//   async function handleSubmit(event) {
-//     event.preventDefault();
-//     const response = await request('post', `/${userId}/newPointRegistry`);
 
-//     if (response.status !== 200) {
-//       // navigate(`/review/${id}`);
-//       return alert('Somethign went wrong while trying to save the review.');
-//     }
-//     // setDisable(true);
-//     setFlagIsEntry({flagIsEntryPoint});
-//     // navigate(`/review/${id}`);
-//     return alert('Successfully saved point.');
-//   },
-//   [/*navigate, reviewDescription, review,*/ iuserId, request],
-// );
+// Estrutura do filtro do espelho:
+// - 
