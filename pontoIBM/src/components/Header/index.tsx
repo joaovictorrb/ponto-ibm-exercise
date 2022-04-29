@@ -21,7 +21,7 @@ export default function Header({title, returnButton}: HeaderProps) {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Dashboard');
+                navigation.goBack();
               }}>
               <Icon name="x" style={styles.icon} />
             </TouchableOpacity>

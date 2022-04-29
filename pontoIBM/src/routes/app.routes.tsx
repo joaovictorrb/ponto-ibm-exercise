@@ -4,6 +4,7 @@ import Dashboard from '../screens/Dashboard';
 import Espelho from '../screens/Dashboard/Espelho';
 import ConsultarPontos from '../screens/Dashboard/ConsultarPontos';
 import RegistrarPontos from '../screens/Dashboard/RegistrarPontos';
+import DayPoints from '../screens/Dashboard/Espelho/DayPoints';
 
 const AppStack = createStackNavigator();
 
@@ -18,6 +19,7 @@ function AppRoutes() {
         <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />
         <AppStack.Screen name="RegistrarPontos" component={RegistrarPontos} />
         <AppStack.Screen name="Espelho" component={Espelho} />
+        <AppStack.Screen name="DayPoints" component={DayPoints} />
     </AppStack.Navigator>
   );
 }
