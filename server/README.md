@@ -284,23 +284,30 @@ adonis serve --dev
 - Response:
 
 ```json
-{
-	"userId": 2,
-	"username": "usern",
-	"email": "usern@gmail.com",
-	"created_at": "2022-04-12 23:25:17",
-	"updated_at": "2022-04-12 23:25:17",
-	"registry": [
-		{
-			"registryId": 24,
-			"user_id": 2,
-			"registryReferalDate": "2022-04-13",
-			"referalMonth": "ABRIL",
-			"hoursExceeded": 0,
-			"avaliableHours": -8,
-			"created_at": "2022-04-12 23:45:07",
-			"updated_at": "2022-04-12 23:45:07"
-		}
-	]
-}
+[
+	{
+		"registryReferalDate": "2022-05-01",
+		"referalMonth": "MAIO",
+		"hoursExceeded": 0,
+		"avaliableHours": -8,
+		"points": [
+			{
+				"hour": "06:08",
+				"isEntry": true
+			},
+			{
+				"hour": "10:08",
+				"isEntry": false
+			},
+			{
+				"hour": "14:08",
+				"isEntry": true
+			},
+			{
+				"hour": "20:08",
+				"isEntry": false
+			}
+		]
+	}
+]
 ```
