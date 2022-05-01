@@ -17,11 +17,11 @@
 const Route = use('Route')
 
 // Auth
-Route.post("/sessions", "AuthController.verifySession");
+Route.post('/sessions', 'AuthController.verifySession')
 // Fetch user for login
-Route.post("/login", "AuthController.verifyUser");
+Route.post('/login', 'AuthController.verifyUser')
 // Regiter new user
-Route.post("/register", "UserController.createUser");
+Route.post('/register', 'UserController.createUser')
 
 // pontos
 Route.post('/newPointRegistry', 'PointController.newPoint').middleware('auth:jwt')
@@ -30,5 +30,3 @@ Route.get('/showPoints', 'PointController.showPoints').middleware('auth:jwt')
 // registro
 Route.post('/registry', 'RegistryController.newDailyRegistry').middleware('auth:jwt')
 Route.get('/registry/:month?', 'RegistryController.showRegistry').middleware('auth:jwt')
-
-

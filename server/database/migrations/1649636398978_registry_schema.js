@@ -7,7 +7,13 @@ class RegistrySchema extends Schema {
 	up() {
 		this.create('registries', (table) => {
 			table.increments('registryId').primary(true)
-			table.integer('user_id').unsigned().references('userId').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+			table
+				.integer('user_id')
+				.unsigned()
+				.references('userId')
+				.inTable('users')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE')
 			table.string('registryReferalDate')
 			table.string('referalMonth')
 			table.boolean('hoursExceeded').notNullable().default(false)
