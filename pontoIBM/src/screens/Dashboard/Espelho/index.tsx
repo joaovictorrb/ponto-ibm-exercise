@@ -16,7 +16,7 @@ export default function Espelho() {
 
   useEffect(() => {
     getUserRegistry(selectedMonth);
-  }, []);
+  }, [selectedMonth]);
 
   return (
     <View style={styles.container}>

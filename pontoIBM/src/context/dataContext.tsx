@@ -21,7 +21,8 @@ export const DataProvider: FC = ({children}) => {
     setUserPoint(response?.data.points);
   };
 
-  // Falta implementar o filtro de mes no request 
+  // Feito
+  
   const getUserRegistry = useCallback( async (monthInput: string) => {
     const response = await request('get', `registry/${monthInput}`, {});
     
@@ -30,9 +31,9 @@ export const DataProvider: FC = ({children}) => {
     console.log('=========== Response - MonthInput =============');
     
     console.log('=========== Response - GetUserRegistry =============');
-    console.log(response?.data.registries);
+    console.log(response?.data);
     console.log('=========== Response - GetUserRegistry =============');
-    setUserRegistry(response?.data.registries);
+    setUserRegistry(response?.data);
   }, []);
 
   const handleSubmit = useCallback(async function handleSubmit() {
