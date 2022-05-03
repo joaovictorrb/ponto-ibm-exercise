@@ -90,18 +90,13 @@ class RegistryController {
 			.where('userId', userId)
 			.fetch()).toJSON()
 
-		console.log(getRegistry[0].registries)
-
 		for (let el of getRegistry[0].registries) {
 			let points = (await PointModel.query()
 				.select('hour')
 				.where('date', el.registryReferalDate)
 				.fetch()).toJSON()
 
-			console.log(points)
-
 			for (const point of points) {
-				console.log(point)
 				point.isEntry = count % 2 == 0 ? true : false
 				arrayPoints.push([ point.hour, point.isEntry ])
 				count++
