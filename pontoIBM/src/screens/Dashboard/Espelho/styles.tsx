@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     width: '100%',
     backgroundColor: '#F4F4F4',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 
   logoutContainer: {
@@ -54,10 +54,18 @@ export const styles = StyleSheet.create({
   cardTitle: {
     fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: 22,
+    fontSize: 20,
     marginLeft: 10,
     marginTop: 5,
-    alignSelf: 'flex-start',
+    color: '#0F62FE',
+  },
+
+  cardDate: {
+    fontWeight: '300',
+    fontStyle: 'normal',
+    fontSize: 20,
+    marginLeft: 10,
+    marginTop: 5,
     color: '#0F62FE',
   },
 
@@ -72,22 +80,40 @@ export const styles = StyleSheet.create({
   },
 
   // Cards
-  
+
   card: {
+    display: 'flex',
     borderRadius: 5,
     width: '95%',
     height: 'auto',
     margin: 10,
     padding: 10,
     backgroundColor: '#ffffff',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+  },
+
+  cardList: {
+    display: 'flex',
+    borderColor: '#0F62FE',
+    borderRadius: 5,
+    width: '95%',
+    height: 'auto',
+    margin: 10,
+    backgroundColor: '#ffffff',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    
   },
 
   cardHeader: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    textAlign: 'left',
+    borderRadius: 5,
+    width: '95%',
+    height: 'auto',
+    margin: 10,
+    padding: 0,
+    backgroundColor: '#ffffff',
     justifyContent: 'space-between',
+    flexDirection: 'column',
   },
 });
 

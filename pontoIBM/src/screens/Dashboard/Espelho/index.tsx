@@ -9,7 +9,8 @@ import {Picker} from '@react-native-picker/picker';
 import CollapsibleList from 'react-native-collapsible-list';
 
 export default function Espelho() {
-  const {getUserRegistry, userRegistry} = useContext(DataContext);
+  const {getUserRegistry, userRegistry} =
+    useContext(DataContext);
 
   const [selectedMonth, setSelectedMonth] = useState('');
 
@@ -26,6 +27,7 @@ export default function Espelho() {
           <Picker
             selectedValue={selectedMonth}
             onValueChange={itemValue => setSelectedMonth(itemValue)}>
+            <Picker.Item label="Selecione um mês" value="" />
             <Picker.Item label="Janeiro" value="JANEIRO" />
             <Picker.Item label="Fevereiro" value="FEVEREIRO" />
             <Picker.Item label="Março" value="MARÇO" />
@@ -47,24 +49,40 @@ export default function Espelho() {
             keyExtractor={item => item.registryReferalData}
             renderItem={({item}) => (
               <CollapsibleList
-                numberOfVisibleItems={0}
+              buttonPosition='top'  
+              numberOfVisibleItems={0}
+                wrapperStyle={styles.cardList}
                 buttonContent={
-                  <View style={styles.card}>
-                    <Text style={styles.cardTitle}>
-                      {item.registryReferalDate}
-                    </Text>
+                  <View style={styles.cardHeader}>
                     <Text style={styles.cardTitle}>
                       {item.referalMonth.toUpperCase()}
                     </Text>
+
+                    <Text style={styles.cardText}>
+                      {item.registryReferalDate}
+                    </Text>
+
+                    {item.hoursExceeded == 0 ? (
+                      <Text style={styles.cardAlert}>Horas excedidas</Text>
+                    ) : null}
+
                   </View>
                 }>
-                <View style={styles.card}>
-                  <Text style={styles.cardText}>{item.points.toString()}</Text>
-                </View>
+
+                {item.points.map((point: any) => (
+                  <View style={styles.cardList}>
+                    {point.isEntry === false ? (
+                      <Text style={styles.cardTitleAlt}>Saida</Text>
+                    ) : (
+                      <Text style={styles.cardTitle}>Entrada</Text>
+                    )}
+                    <Text style={styles.cardText}>{point.hour}</Text>
+                  </View>
+                ))}
+
               </CollapsibleList>
             )}
           />
-          {/* Conteudo da lista expandida */}
         </View>
       </View>
     </View>
