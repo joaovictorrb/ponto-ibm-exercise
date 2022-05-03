@@ -26,7 +26,7 @@ export default function Espelho() {
         <View style={styles.card}>
           <Picker
             selectedValue={selectedMonth}
-            onValueChange={(itemValue, itemIndex) =>
+            onValueChange={(itemValue) =>
               setSelectedMonth(itemValue)
             }>
             <Picker.Item label="Janeiro" value="JANEIRO" />
@@ -45,6 +45,7 @@ export default function Espelho() {
         </View>
         <FlatList
           data={userRegistry as any}
+          keyExtractor={(item) => item.registryReferalData}
           renderItem={({item}) => (
             <TouchableOpacity
               activeOpacity={0.5}

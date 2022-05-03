@@ -3,17 +3,16 @@ import React, {useContext, useEffect, useState} from 'react';
 import {styles} from './styles';
 import Header from '../../../../components/Header';
 import DataContext from '../../../../context/dataContext';
-import {Picker} from '@react-native-picker/picker';
 
 export default function PontosDia() {
   // To-do's:
   // 1. Implementar a call do token dentro do context e transportar-la aqui.
   // 2. Com que a lista de pontos seja exibida num UseEffect, assim atualizando sempre que a tela for renderizada.
 
-  const {userPoint, getUserPoint} = useContext(DataContext);
+  const {dailyPoint, getUserRegistryPoints} = useContext(DataContext);
   
   useEffect(() => {
-    getUserPoint();
+    getUserRegistryPoints();
   }, []);
 
   return (
@@ -22,7 +21,7 @@ export default function PontosDia() {
 
       <View style={styles.mainContent}>
         <FlatList
-          data={userPoint as any}
+          data={dailyPoint as any}
           renderItem={({item}) => (
             <View style={styles.card}>
               {item.flagIsEntry === false ? (

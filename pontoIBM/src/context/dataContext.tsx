@@ -8,6 +8,7 @@ const DataContext = createContext<DataContextData>({} as DataContextData);
 export const DataProvider: FC = ({children}) => {
   const {request} = useAxios();
 
+  const [dailyPoint, setDailyPoint] = useState<any>([[]]);
   const [userPoint, setUserPoint] = useState<Object | null>(null);
   const [userRegistry, setUserRegistry] = useState<Object | null>(null);
   const [recordPoints, setRecordPoints] = useState<Object | null>(null);
@@ -20,12 +21,15 @@ export const DataProvider: FC = ({children}) => {
     console.log('=========== Response - GetUserPoint =============');
     setUserPoint(response?.data.points);
   };
-
-  // Feito
   
-  const getUserRegistry = useCallback( async (monthInput: string) => {
-    const response = await request('get', `registry/${monthInput}`, {});
+  // I need to the parameter monthInput to be optional
+  const getUserRegistry = useCallback( async (monthInput?: string) => {
     
+    // If monthInput is not passed, then it will be the current month
+    let url='registry';
+    if(monthInput) url += `/${monthInput}`;
+
+    const response = await request('get', url, {});
     console.log('=========== Response - MonthInput =============');
     console.log(monthInput);
     console.log('=========== Response - MonthInput =============');
@@ -33,7 +37,21 @@ export const DataProvider: FC = ({children}) => {
     console.log('=========== Response - GetUserRegistry =============');
     console.log(response?.data);
     console.log('=========== Response - GetUserRegistry =============');
+    
+    console.log('=========== Response - GetUserRegistry - Points =============');
+    console.log(response?.data.points);
+    console.log('=========== Response - GetUserRegistry - Points =============');
+
     setUserRegistry(response?.data);
+  }, []);
+
+  const getUserRegistryPoints = useCallback( async () => {
+    
+    await getUserRegistry();
+
+    var userDailyPointHandler = dailyPoint;
+
+    setDailyPoint(userDailyPointHandler);
   }, []);
 
   const handleSubmit = useCallback(async function handleSubmit() {
@@ -74,6 +92,8 @@ export const DataProvider: FC = ({children}) => {
         handleSubmit,
         recordPoints,
         submitToRegistry,
+        dailyPoint,
+        getUserRegistryPoints,
       }}>
       {children}
     </DataContext.Provider>
