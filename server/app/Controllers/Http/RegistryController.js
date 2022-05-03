@@ -76,6 +76,7 @@ class RegistryController {
 			? params.month
 			: moment(dateNow).locale('pt').startOf('month').format('MMMM').toUpperCase()
 		let finalResponse = []
+		let arrayPoints = []
 		let count = 0
 		if (!user)
 			return response
@@ -89,14 +90,20 @@ class RegistryController {
 			.where('userId', userId)
 			.fetch()).toJSON()
 
+		console.log(getRegistry[0].registries)
+
 		for (let el of getRegistry[0].registries) {
 			let points = (await PointModel.query()
 				.select('hour')
 				.where('date', el.registryReferalDate)
 				.fetch()).toJSON()
 
+			console.log(points)
+
 			for (const point of points) {
+				console.log(point)
 				point.isEntry = count % 2 == 0 ? true : false
+				arrayPoints.push([ point.hour, point.isEntry ])
 				count++
 			}
 			const temporaryResponse = {
@@ -104,7 +111,7 @@ class RegistryController {
 				referalMonth: el.referalMonth,
 				hoursExceeded: el.hoursExceeded,
 				avaliableHours: el.avaliableHours,
-				points: points
+				points: arrayPoints
 			}
 
 			finalResponse.push(temporaryResponse)

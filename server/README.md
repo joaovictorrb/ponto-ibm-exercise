@@ -291,22 +291,38 @@ adonis serve --dev
 		"hoursExceeded": 0,
 		"avaliableHours": -8,
 		"points": [
-			{
-				"hour": "06:08",
-				"isEntry": true
-			},
-			{
-				"hour": "10:08",
-				"isEntry": false
-			},
-			{
-				"hour": "14:08",
-				"isEntry": true
-			},
-			{
-				"hour": "20:08",
-				"isEntry": false
-			}
+			[
+				"06:08",
+				true
+			],
+			[
+				"10:08",
+				false
+			],
+			[
+				"14:08",
+				true
+			],
+			[
+				"20:08",
+				false
+			],
+			[
+				"06:08",
+				true
+			],
+			[
+				"10:08",
+				false
+			],
+			[
+				"14:08",
+				true
+			],
+			[
+				"20:08",
+				false
+			]
 		]
 	}
 ]
