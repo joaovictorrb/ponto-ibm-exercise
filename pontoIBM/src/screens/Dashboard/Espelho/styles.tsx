@@ -65,7 +65,6 @@ export const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontSize: 20,
     marginLeft: 10,
-    marginTop: 5,
     color: '#0F62FE',
   },
 
@@ -74,7 +73,6 @@ export const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontSize: 22,
     marginLeft: 10,
-    marginTop: 5,
     alignSelf: 'flex-start',
     color: 'red',
   },
@@ -90,6 +88,19 @@ export const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#ffffff',
     flexDirection: 'column',
+  },
+
+  cardItemList: {
+    display: 'flex',
+    borderRadius: 5,
+    width: '95%',
+    height: 'auto',
+    margin: 10,
+    padding: 10,
+    backgroundColor: '#ffffff',
+    flexDirection: 'column',
+    borderBottomWidth: 1,
+    borderColor: '#0F62FE',
   },
 
   cardList: {

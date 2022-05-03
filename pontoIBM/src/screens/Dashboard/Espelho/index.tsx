@@ -55,14 +55,18 @@ export default function Espelho() {
                 buttonContent={
                   <View style={styles.cardHeader}>
                     <Text style={styles.cardTitle}>
-                      {item.referalMonth.toUpperCase()}
+                      {item.referalMonth}
                     </Text>
 
                     <Text style={styles.cardText}>
-                      {item.registryReferalDate}
+                      Data: {item.registryReferalDate}
                     </Text>
 
-                    {item.hoursExceeded == 0 ? (
+                    <Text style={styles.cardText}>
+                      Horas de trabalho restantes: {item.avaliableHours * -1}
+                    </Text>
+
+                    {item.hoursExceeded > 0 ? (
                       <Text style={styles.cardAlert}>Horas excedidas</Text>
                     ) : null}
 
@@ -70,7 +74,7 @@ export default function Espelho() {
                 }>
 
                 {item.points.map((point: any) => (
-                  <View style={styles.cardList}>
+                  <View style={styles.cardItemList}>
                     {point.isEntry === false ? (
                       <Text style={styles.cardTitleAlt}>Saida</Text>
                     ) : (
@@ -87,44 +91,4 @@ export default function Espelho() {
       </View>
     </View>
   );
-}
-
-// Old list
-
-{
-  /* 
-<FlatList
-data={userRegistry as any}
-keyExtractor={(item) => item.registryReferalData}
-renderItem={({item}) => (
-  
-  
-  <TouchableOpacity
-    activeOpacity={0.5}>
-    <View style={styles.card}>
-      <View style={styles.cardHeader}>
-        <Text style={styles.cardTitle}>
-          {item.referalMonth.toUpperCase()}
-        </Text>
-        {item.hoursExceeded > 0 ? (
-          <Text style={styles.cardAlert}>Horas excedidas</Text>
-        ) : null}
-      </View>
-      <Text style={styles.cardText}>
-        Registrado em: {item.registryReferalDate}
-      </Text>
-
-      <Text style={styles.cardText}>
-        Horas estouradas: {item.hoursExceeded}
-      </Text>
-
-      <Text style={styles.cardText}>
-        Horas a cumprir: {item.avaliableHours}
-      </Text>
-    </View>
-  </TouchableOpacity>
-)}
-/> 
-
-*/
 }

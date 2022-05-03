@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContextData} from '../@types/types';
 import useAxios from '../hooks/useAxios';
-import { Alert } from 'react-native';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -29,7 +28,7 @@ export const AuthProvider: FC = ({children}) => {
 
       await getUserData();
     } catch (error) {
-      Alert.alert("Erro ao fazer login");
+      setError(error);
     } finally {
       setLoading(false);
     }

@@ -5,9 +5,6 @@ import Header from '../../../components/Header';
 import DataContext from '../../../context/dataContext';
 
 export default function ConsultarPontos() {
-  // To-do's:
-  // 1. Implementar a call do token dentro do context e transportar-la aqui.
-  // 2. Com que a lista de pontos seja exibida num UseEffect, assim atualizando sempre que a tela for renderizada.
 
   const {userPoint, getUserPoint} = useContext(DataContext);
 
