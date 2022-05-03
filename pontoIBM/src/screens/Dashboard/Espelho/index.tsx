@@ -63,7 +63,7 @@ export default function Espelho() {
                     </Text>
 
                     <Text style={styles.cardText}>
-                      Horas de trabalho restantes: {item.avaliableHours * -1}
+                      Horas de trabalho pendentes: {item.avaliableHours * -1}
                     </Text>
 
                     {item.hoursExceeded > 0 ? (
