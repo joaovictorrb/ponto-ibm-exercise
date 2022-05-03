@@ -21,6 +21,7 @@
     "json-server": "^0.17.0",
     "react": "17.0.2",
     "react-native": "0.68.0",
+    "react-native-collapsible-button": "^2.0.2",
     "react-native-collapsible-list": "^2.2.2",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-responsive-fontsize": "^0.5.1",

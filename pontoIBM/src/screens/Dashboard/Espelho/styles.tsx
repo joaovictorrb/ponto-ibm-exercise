@@ -80,6 +80,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     backgroundColor: '#ffffff',
+    justifyContent: 'space-between',
   },
 
   cardHeader: {

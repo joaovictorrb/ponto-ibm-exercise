@@ -19,7 +19,6 @@ function AppRoutes() {
         <AppStack.Screen name="ConsultarPontos" component={ConsultarPontos} />
         <AppStack.Screen name="RegistrarPontos" component={RegistrarPontos} />
         <AppStack.Screen name="Espelho" component={Espelho} />
-        <AppStack.Screen name="DayPoints" component={DayPoints} />
     </AppStack.Navigator>
   );
 }
